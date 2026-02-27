@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr" class="no-js">
+<head><script src="/portfolio/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=portfolio/livereload" data-no-instant defer></script>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Reconstructing Modern Reinforcement Learning | Aditya Ramesh</title>
+
+<meta property="og:url" content="http://localhost:1313/portfolio/projects/reconstructing-modern-reinforcement-learning/">
+  <meta property="og:site_name" content="Research Portfolio">
+  <meta property="og:title" content="Reconstructing Modern Reinforcement Learning">
+  <meta property="og:description" content="A structured roadmap to reinforcement learning, tracing the path from bandits and Q-learning to DQN, PPO, SAC, and offline RL by studying the failures each algorithm was designed to fix.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="projects">
+    <meta property="article:tag" content="Reinforcement-Learning">
+    <meta property="article:tag" content="Deep-Rl">
+    <meta property="article:tag" content="Dqn">
+    <meta property="article:tag" content="Ppo">
+    <meta property="article:tag" content="Sac">
+    <meta property="article:tag" content="Offline-Rl">
+
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Reconstructing Modern Reinforcement Learning">
+  <meta name="twitter:description" content="A structured roadmap to reinforcement learning, tracing the path from bandits and Q-learning to DQN, PPO, SAC, and offline RL by studying the failures each algorithm was designed to fix.">
+
+<link rel="canonical" href="http://localhost:1313/portfolio/projects/reconstructing-modern-reinforcement-learning/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+
+
+  
+  <link rel="stylesheet" href="/portfolio/css/main.min.css">
+
+
+
+
+  
+  <script src="/portfolio/js/main.min.js" defer></script>
+
+
+
+
+
+</head>
+<body class="theme-light">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <header class="site-header">
+  <div class="header-inner">
+    <a class="site-name" href="/portfolio/">Aditya Ramesh</a>
+    <p class="site-tagline">Building autonomous AI agents that learn, reason, and act reliably in real environments.</p>
+    <nav class="nav">
+      
+        <a class="nav-link" href="/portfolio/research/">Research</a>
+      
+        <a class="nav-link" href="/portfolio/about/">About</a>
+      
+    </nav>
+    <button type="button" class="dark-toggle" aria-label="Toggle dark mode" title="Toggle dark mode">
+      <span class="dark-toggle-icon" aria-hidden="true"></span>
+    </button>
+  </div>
+</header>
+
+  </header>
+  <main id="main" class="main main--wide">
+    
+<article class="page project-single">
+  <header class="page-header">
+    <h1 class="page-title">Reconstructing Modern Reinforcement Learning</h1>
+    <p class="page-desc">A structured roadmap to reinforcement learning, tracing the path from bandits and Q-learning to DQN, PPO, SAC, and offline RL by studying the failures each algorithm was designed to fix.</p>
+    
+      <ul class="page-tags">
+        <li>reinforcement-learning</li><li>deep-rl</li><li>dqn</li><li>ppo</li><li>sac</li><li>offline-rl</li><li>rl-theory</li>
+      </ul>
+    
+  </header>
+
+  <div class="project-layout">
+    
+      <aside class="toc-sidebar">
+        <nav class="toc" aria-label="Table of contents">
+          <h2 class="toc-title">Contents</h2>
+          <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#1-value-learning-foundations">1. Value Learning Foundations</a></li>
+        <li><a href="#2-stabilizing-q-learning">2. Stabilizing Q-Learning</a></li>
+        <li><a href="#3-continuous-action-spaces">3. Continuous Action Spaces</a></li>
+        <li><a href="#4-unstable-policy-updates">4. Unstable Policy Updates</a></li>
+        <li><a href="#5-off-policy-continuous-control">5. Off-Policy Continuous Control</a></li>
+        <li><a href="#6-exploration">6. Exploration</a></li>
+        <li><a href="#7-sparse-rewards">7. Sparse Rewards</a></li>
+        <li><a href="#8-partial-observability">8. Partial Observability</a></li>
+        <li><a href="#9-offline-reinforcement-learning">9. Offline Reinforcement Learning</a></li>
+        <li><a href="#10-sample-inefficiency">10. Sample Inefficiency</a></li>
+      </ul>
+    </li>
+    <li><a href="#how-the-series-will-work">How the series will work</a></li>
+  </ul>
+</nav>
+        </nav>
+      </aside>
+    
+    <div class="project-content page-content">
+      <p>Reinforcement learning papers often present a misleading picture of the field.
+Algorithms appear as independent inventions — DQN, PPO, SAC, HER — each with its own notation, diagrams, and benchmarks. From a distance this looks like steady progress. From close up it feels like memorizing a zoo.</p>
+<p>This series takes a different position:</p>
+<p>Modern reinforcement learning is not a sequence of new ideas.
+It is a sequence of <em>repairs</em>.</p>
+<p>Every major algorithm exists because a simpler learning rule failed under a specific violated assumption. Once you identify the assumption that broke, the algorithm becomes obvious. Once you don’t, the field looks mysterious.</p>
+<p>The goal of this project is to reconstruct the field by retracing those failures.</p>
+<p>We will not begin with MuJoCo robots or large neural networks. We begin with the smallest possible setting — bandits — and gradually remove the assumptions that make learning easy. Each time learning stops working, we examine the failure empirically, diagnose what mathematical property was violated, and introduce the minimal mechanism required to fix it.</p>
+<p>The series therefore follows a single causal chain:</p>
+<hr>
+<h3 id="1-value-learning-foundations">1. Value Learning Foundations</h3>
+<p><strong>Online interaction → bandits → tabular MDPs → Q-learning → DQN</strong>
+When we combine function approximation, bootstrapping, and off-policy data, value learning becomes unstable. This instability motivates deep Q-networks.</p>
+<hr>
+<h3 id="2-stabilizing-q-learning">2. Stabilizing Q-Learning</h3>
+<p><strong>DQN → target networks → replay buffers → Double/Dueling/PER → Rainbow</strong>
+We discover that DQN itself only works because of several hidden stabilizers. These mechanisms are not improvements — they are patches for divergence in bootstrapped learning.</p>
+<hr>
+<h3 id="3-continuous-action-spaces">3. Continuous Action Spaces</h3>
+<p><strong>Discrete argmax → continuous control → policy gradients → actor–critic</strong>
+Q-learning requires maximizing over actions. In continuous spaces this becomes intractable, forcing us to learn policies directly.</p>
+<hr>
+<h3 id="4-unstable-policy-updates">4. Unstable Policy Updates</h3>
+<p><strong>REINFORCE → advantage estimation → TRPO → PPO</strong>
+Direct policy optimization turns out to be violently unstable because small parameter updates can induce large distribution shifts. PPO emerges as a practical constraint on how fast a policy is allowed to change.</p>
+<hr>
+<h3 id="5-off-policy-continuous-control">5. Off-Policy Continuous Control</h3>
+<p><strong>Replay + actor networks → DDPG → overestimated Q-values → TD3</strong>
+When actor-critic methods inherit bootstrapping, they inherit Q-learning’s bias as well. Twin critics appear as a correction for systematic value overestimation.</p>
+<hr>
+<h3 id="6-exploration">6. Exploration</h3>
+<p><strong>Deterministic policies → poor exploration → entropy regularization → SAC</strong>
+Many failures attributed to optimization are actually failures of exploration. Maximum-entropy RL reframes learning as probabilistic inference and produces stable behavior in complex environments.</p>
+<hr>
+<h3 id="7-sparse-rewards">7. Sparse Rewards</h3>
+<p><strong>Reward rarely observed → no gradient → goal relabeling → HER</strong>
+Even a correct algorithm cannot learn without signal. Hindsight experience replay shows that sometimes the problem is not optimization, but the definition of success.</p>
+<hr>
+<h3 id="8-partial-observability">8. Partial Observability</h3>
+<p><strong>State aliasing → memory → recurrent policies</strong>
+Real environments are not Markov. Agents must infer hidden state from history, turning reinforcement learning into a representation learning problem.</p>
+<hr>
+<h3 id="9-offline-reinforcement-learning">9. Offline Reinforcement Learning</h3>
+<p><strong>Fixed datasets → distribution shift → value extrapolation → CQL/IQL</strong>
+Most RL algorithms assume data comes from the current policy. When that assumption breaks, value functions hallucinate. Offline RL introduces conservative learning objectives to handle this shift.</p>
+<hr>
+<h3 id="10-sample-inefficiency">10. Sample Inefficiency</h3>
+<p><strong>Interaction cost → learned dynamics → planning → world models</strong>
+Model-free methods trade computation for data. Model-based reinforcement learning closes this gap by learning to imagine experience instead of collecting it.</p>
+<hr>
+<h2 id="how-the-series-will-work">How the series will work</h2>
+<p>Each article in the series follows the same structure:</p>
+<ol>
+<li>We implement the simplest possible learner.</li>
+<li>We show a concrete failure (training curves, value estimates, policy collapse).</li>
+<li>We identify the violated assumption in the Bellman update or policy objective.</li>
+<li>We introduce the minimal mechanism that fixes the problem.</li>
+<li>We verify the fix empirically.</li>
+</ol>
+<p>The emphasis is not on reproducing benchmarks.
+It is on understanding <em>why an algorithm needed to be invented at all</em>.</p>
+<p>By the end, DQN, PPO, and SAC should no longer look like separate algorithms. They should look like different responses to a single question:</p>
+<p><strong>How do you make learning stable when an agent must learn from its own predictions while acting in an uncertain world?</strong></p>
+<p>This is what we mean by <em>reconstructing</em> reinforcement learning.</p>
+
+    </div>
+  </div>
+</article>
+
+  </main>
+  <footer class="site-footer">
+    <footer class="site-footer">
+  <div class="footer-inner">
+    <p class="footer-copy">&copy; 2026 Aditya Ramesh</p>
+  </div>
+</footer>
+
+  </footer>
+</body>
+</html>

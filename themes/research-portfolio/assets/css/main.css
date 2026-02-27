@@ -112,6 +112,10 @@ a:hover { color: var(--accent-hover); text-decoration: underline; }
   padding: 0 var(--space) 4rem;
 }
 
+.main--wide {
+  max-width: min(1200px, 92vw);
+}
+
 /* Home */
 .home-header { margin-bottom: 2.5rem; }
 .home-name { font-size: 2rem; font-weight: 700; margin: 0 0 0.25rem 0; }

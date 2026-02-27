@@ -19,35 +19,31 @@
   </url><url>
     <loc>http://localhost:1313/portfolio/about/</loc>
   </url><url>
+    <loc>http://localhost:1313/portfolio/tags/deep-rl/</loc>
+  </url><url>
     <loc>http://localhost:1313/portfolio/tags/diffusion/</loc>
   </url><url>
     <loc>http://localhost:1313/portfolio/projects/diffusion-transformer-embodied-robustness/</loc>
   </url><url>
+    <loc>http://localhost:1313/portfolio/tags/dqn/</loc>
+  </url><url>
     <loc>http://localhost:1313/portfolio/tags/embodied-ai/</loc>
   </url><url>
-    <loc>http://localhost:1313/portfolio/tags/interpretability/</loc>
+    <loc>http://localhost:1313/portfolio/tags/offline-rl/</loc>
   </url><url>
-    <loc>http://localhost:1313/portfolio/tags/jailbreak/</loc>
-  </url><url>
-    <loc>http://localhost:1313/portfolio/tags/llm/</loc>
-  </url><url>
-    <loc>http://localhost:1313/portfolio/projects/lora-reward-model-soc/</loc>
-  </url><url>
-    <loc>http://localhost:1313/portfolio/projects/jailbreak-datasets-posttraining-hardening/</loc>
-  </url><url>
-    <loc>http://localhost:1313/portfolio/projects/peft-defense-agent-output-gating/</loc>
+    <loc>http://localhost:1313/portfolio/tags/ppo/</loc>
   </url><url>
     <loc>http://localhost:1313/portfolio/projects/</loc>
   </url><url>
-    <loc>http://localhost:1313/portfolio/tags/retrieval/</loc>
+    <loc>http://localhost:1313/portfolio/projects/reconstructing-modern-reinforcement-learning/</loc>
   </url><url>
-    <loc>http://localhost:1313/portfolio/tags/reward-model/</loc>
+    <loc>http://localhost:1313/portfolio/tags/reinforcement-learning/</loc>
+  </url><url>
+    <loc>http://localhost:1313/portfolio/tags/rl-theory/</loc>
   </url><url>
     <loc>http://localhost:1313/portfolio/tags/robustness/</loc>
   </url><url>
-    <loc>http://localhost:1313/portfolio/tags/safety/</loc>
-  </url><url>
-    <loc>http://localhost:1313/portfolio/projects/safety-reasoning-models-diagnostics/</loc>
+    <loc>http://localhost:1313/portfolio/tags/sac/</loc>
   </url><url>
     <loc>http://localhost:1313/portfolio/tags/</loc>
   </url><url>

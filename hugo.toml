@@ -64,10 +64,6 @@ theme = 'research-portfolio'
     url = '/about/'
     weight = 40
   [[menu.main]]
-    name = 'Projects'
-    url = '/projects/'
-    weight = 10
-  [[menu.main]]
     name = 'Research'
     url = '/research/'
     weight = 20

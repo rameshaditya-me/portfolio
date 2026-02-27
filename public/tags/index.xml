@@ -8,10 +8,24 @@
     <language>en-us</language>
     <atom:link href="http://localhost:1313/portfolio/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>Deep-Rl</title>
+      <link>http://localhost:1313/portfolio/tags/deep-rl/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/portfolio/tags/deep-rl/</guid>
+      <description></description>
+    </item>
+    <item>
       <title>Diffusion</title>
       <link>http://localhost:1313/portfolio/tags/diffusion/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/portfolio/tags/diffusion/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Dqn</title>
+      <link>http://localhost:1313/portfolio/tags/dqn/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/portfolio/tags/dqn/</guid>
       <description></description>
     </item>
     <item>
@@ -22,38 +36,31 @@
       <description></description>
     </item>
     <item>
-      <title>Interpretability</title>
-      <link>http://localhost:1313/portfolio/tags/interpretability/</link>
+      <title>Offline-Rl</title>
+      <link>http://localhost:1313/portfolio/tags/offline-rl/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/portfolio/tags/interpretability/</guid>
+      <guid>http://localhost:1313/portfolio/tags/offline-rl/</guid>
       <description></description>
     </item>
     <item>
-      <title>Jailbreak</title>
-      <link>http://localhost:1313/portfolio/tags/jailbreak/</link>
+      <title>Ppo</title>
+      <link>http://localhost:1313/portfolio/tags/ppo/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/portfolio/tags/jailbreak/</guid>
+      <guid>http://localhost:1313/portfolio/tags/ppo/</guid>
       <description></description>
     </item>
     <item>
-      <title>LLM</title>
-      <link>http://localhost:1313/portfolio/tags/llm/</link>
+      <title>Reinforcement-Learning</title>
+      <link>http://localhost:1313/portfolio/tags/reinforcement-learning/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/portfolio/tags/llm/</guid>
+      <guid>http://localhost:1313/portfolio/tags/reinforcement-learning/</guid>
       <description></description>
     </item>
     <item>
-      <title>Retrieval</title>
-      <link>http://localhost:1313/portfolio/tags/retrieval/</link>
+      <title>Rl-Theory</title>
+      <link>http://localhost:1313/portfolio/tags/rl-theory/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/portfolio/tags/retrieval/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Reward Model</title>
-      <link>http://localhost:1313/portfolio/tags/reward-model/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/portfolio/tags/reward-model/</guid>
+      <guid>http://localhost:1313/portfolio/tags/rl-theory/</guid>
       <description></description>
     </item>
     <item>
@@ -64,10 +71,10 @@
       <description></description>
     </item>
     <item>
-      <title>Safety</title>
-      <link>http://localhost:1313/portfolio/tags/safety/</link>
+      <title>Sac</title>
+      <link>http://localhost:1313/portfolio/tags/sac/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/portfolio/tags/safety/</guid>
+      <guid>http://localhost:1313/portfolio/tags/sac/</guid>
       <description></description>
     </item>
   </channel>

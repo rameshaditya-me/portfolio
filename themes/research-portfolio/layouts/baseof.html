@@ -8,7 +8,7 @@
   <header class="site-header">
     {{ partial "header.html" . }}
   </header>
-  <main id="main" class="main">
+  <main id="main" class="main{{ if eq .Section "projects" }} main--wide{{ end }}">
     {{ block "main" . }}{{ end }}
   </main>
   <footer class="site-footer">
