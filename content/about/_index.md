@@ -13,7 +13,6 @@ You can find publications and technical details on my [research page]({{< ref "/
 
 ## News
 
-* First part of my blog post series on **"Reconstructing mordern Reinforcement Learning"** out. [Writeup]({{< ref "/projects/reconstructing-RL-overview" >}})
 * Paper on improving performance in sparse reward settings : **"Graph-theoretic intrinsic reward for RL"** accepted at ICLR 2026 (in collaboration with Jatin et al.). [Paper](https://openreview.net/forum?id=W8bKDPf1Ko) · [Writeup]({{< ref "/research/chauhan2026-graph-theoretic-iclr" >}})
 * Paper on automating LLM jailbreaking : **"Efficient Jailbreak attacks on LLMs"**. [Paper](https://openreview.net/forum?id=jCDF7G3LpF) · [Writeup]({{< ref "/research/ramesh2025-jailbreak-iclr" >}})
 
