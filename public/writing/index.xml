@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Writing on Research Portfolio</title>
+    <link>http://localhost:1313/portfolio/writing/</link>
+    <description>Recent content in Writing on Research Portfolio</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 15 May 2024 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/portfolio/writing/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Implementing Conservative Q-Learning from Scratch</title>
+      <link>http://localhost:1313/portfolio/writing/example-article/</link>
+      <pubDate>Wed, 15 May 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/portfolio/writing/example-article/</guid>
+      <description>&lt;p&gt;Technical articles support &lt;strong&gt;equations&lt;/strong&gt; and code. Enable math in front matter with &lt;code&gt;math: true&lt;/code&gt; for KaTeX.&lt;/p&gt;&#xA;&lt;h2 id=&#34;goal&#34;&gt;Goal&lt;/h2&gt;&#xA;&lt;p&gt;We walk through a minimal implementation of Conservative Q-Learning (CQL) for offline RL. The key idea is to penalize the Q-function for assigning high values to actions that are unlikely under the behavior policy, reducing overestimation.&lt;/p&gt;&#xA;&lt;h2 id=&#34;main-equation&#34;&gt;Main equation&lt;/h2&gt;&#xA;&lt;p&gt;The CQL loss adds a regularizer to the standard TD loss:&lt;/p&gt;&#xA;&lt;p&gt;$$&#xA;\mathcal{L}&lt;em&gt;{\mathrm{CQL}} = \alpha \cdot \mathbb{E}&lt;/em&gt;{s \sim \mathcal{D}}\left[ \log \sum_a \exp(Q(s,a)) - \mathbb{E}&lt;em&gt;{a \sim \pi&lt;/em&gt;\beta(a|s)}[Q(s,a)] \right] + \mathcal{L}_{\mathrm{TD}}&#xA;$$&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

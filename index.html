@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="header">
+    <a href="#" class="logo">Portfolio</a>
+    <nav class="nav">
+      <a href="#about">About</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <button class="menu-toggle" aria-label="Toggle menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </header>
+
+  <main>
+    <section class="hero">
+      <p class="hero__tag">Hi, I'm</p>
+      <h1 class="hero__title">Your Name</h1>
+      <p class="hero__subtitle">I build things for the web — front-end, back-end, and everything in between.</p>
+      <div class="hero__actions">
+        <a href="#projects" class="btn btn--primary">View my work</a>
+        <a href="#contact" class="btn btn--ghost">Get in touch</a>
+      </div>
+    </section>
+
+    <section id="about" class="section about">
+      <h2 class="section__title">About</h2>
+      <div class="about__content">
+        <p class="about__text">
+          I'm a developer who loves turning ideas into clean, fast, and accessible experiences.
+          When I'm not coding, I'm probably learning something new or exploring the outdoors.
+        </p>
+        <p class="about__text">
+          I work with modern tools and care about performance, accessibility, and design that feels right.
+        </p>
+      </div>
+    </section>
+
+    <section id="projects" class="section projects">
+      <h2 class="section__title">Projects</h2>
+      <div class="projects__grid">
+        <article class="card">
+          <h3 class="card__title">Project One</h3>
+          <p class="card__desc">A short description of what this project does and what you used.</p>
+          <div class="card__links">
+            <a href="#" target="_blank" rel="noopener">Live</a>
+            <a href="#" target="_blank" rel="noopener">Code</a>
+          </div>
+        </article>
+        <article class="card">
+          <h3 class="card__title">Project Two</h3>
+          <p class="card__desc">Another project with tech stack and outcome in one line.</p>
+          <div class="card__links">
+            <a href="#" target="_blank" rel="noopener">Live</a>
+            <a href="#" target="_blank" rel="noopener">Code</a>
+          </div>
+        </article>
+        <article class="card">
+          <h3 class="card__title">Project Three</h3>
+          <p class="card__desc">Third project to show range of skills and interests.</p>
+          <div class="card__links">
+            <a href="#" target="_blank" rel="noopener">Live</a>
+            <a href="#" target="_blank" rel="noopener">Code</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="contact" class="section contact">
+      <h2 class="section__title">Contact</h2>
+      <p class="contact__text">I'm open to new opportunities and conversations. Say hello.</p>
+      <div class="contact__links">
+        <a href="mailto:your@email.com" class="contact__link">your@email.com</a>
+        <a href="https://github.com/everywhereuser007-stack" target="_blank" rel="noopener" class="contact__link">GitHub</a>
+        <a href="https://linkedin.com/in/yourprofile" target="_blank" rel="noopener" class="contact__link">LinkedIn</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>Built with care · © <span id="year"></span></p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

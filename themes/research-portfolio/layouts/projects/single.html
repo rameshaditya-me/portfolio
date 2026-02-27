@@ -1,0 +1,27 @@
+{{ define "main" }}
+<article class="page project-single">
+  <header class="page-header">
+    <h1 class="page-title">{{ .Title }}</h1>
+    {{ with .Params.description }}<p class="page-desc">{{ . }}</p>{{ end }}
+    {{ with .Params.tags }}
+      <ul class="page-tags">
+        {{ range . }}<li>{{ . }}</li>{{ end }}
+      </ul>
+    {{ end }}
+  </header>
+
+  <div class="project-layout">
+    {{ if and (default true .Params.toc) (ge (len .TableOfContents) 50) }}
+      <aside class="toc-sidebar">
+        <nav class="toc" aria-label="Table of contents">
+          <h2 class="toc-title">Contents</h2>
+          {{ .TableOfContents }}
+        </nav>
+      </aside>
+    {{ end }}
+    <div class="project-content page-content">
+      {{ .Content }}
+    </div>
+  </div>
+</article>
+{{ end }}

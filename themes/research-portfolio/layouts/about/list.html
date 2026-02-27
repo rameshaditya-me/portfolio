@@ -1,0 +1,13 @@
+{{ define "main" }}
+  <article class="page about-page">
+    <header class="page-header">
+      <h1 class="page-title">{{ .Title }}</h1>
+    </header>
+    <div class="page-content">
+      {{ .Content }}
+    </div>
+    {{ with site.Params.cv_pdf }}
+      <p class="about-cv"><a href="{{ site.BaseURL }}{{ . }}" class="btn btn-primary" download>Download CV (PDF)</a></p>
+    {{ end }}
+  </article>
+{{ end }}

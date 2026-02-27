@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Diffusion on Research Portfolio</title>
+    <link>http://localhost:1313/portfolio/tags/diffusion/</link>
+    <description>Recent content in Diffusion on Research Portfolio</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <atom:link href="http://localhost:1313/portfolio/tags/diffusion/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Diffusion Transformer with LoRA and Action-Consistency for Robust Embodied Control</title>
+      <link>http://localhost:1313/portfolio/projects/diffusion-transformer-embodied-robustness/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/portfolio/projects/diffusion-transformer-embodied-robustness/</guid>
+      <description>&lt;h2 id=&#34;problem&#34;&gt;Problem&lt;/h2&gt;&#xA;&lt;p&gt;&lt;em&gt;Placeholder: embodied control under RGB perturbations and degraded visual inputs.&lt;/em&gt;&lt;/p&gt;&#xA;&lt;h2 id=&#34;why-the-problem-is-hard&#34;&gt;Why the problem is hard&lt;/h2&gt;&#xA;&lt;p&gt;&lt;em&gt;Placeholder: why perception robustness and action consistency under distribution shift are difficult.&lt;/em&gt;&lt;/p&gt;&#xA;&lt;h2 id=&#34;system-design&#34;&gt;System design&lt;/h2&gt;&#xA;&lt;p&gt;&lt;em&gt;Placeholder: Diffusion Transformer + LoRA + action-consistency loss → control policy.&lt;/em&gt;&lt;/p&gt;&#xA;&lt;h2 id=&#34;architecture-diagram&#34;&gt;Architecture diagram&lt;/h2&gt;&#xA;&#xA;&#xA;&#xA;&#xA;&lt;figure&gt;&#xA;  &lt;img src=&#34;http://localhost:1313/portfolio/images/placeholder-arch.svg&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&#xA;  &lt;figcaption&gt;Caption for your diagram.&lt;/figcaption&gt;&#xA;&lt;/figure&gt;&#xA;&#xA;&lt;h2 id=&#34;implementation-details&#34;&gt;Implementation details&lt;/h2&gt;&#xA;&lt;p&gt;&lt;em&gt;Placeholder: DiT backbone, LoRA config, action-consistency formulation, perturbation augmentation.&lt;/em&gt;&lt;/p&gt;&#xA;&lt;h2 id=&#34;experiments&#34;&gt;Experiments&lt;/h2&gt;&#xA;&lt;p&gt;&lt;em&gt;Placeholder: perturbation types (illumination, blur, occlusion), baselines, control metrics.&lt;/em&gt;&lt;/p&gt;&#xA;&lt;h2 id=&#34;results&#34;&gt;Results&lt;/h2&gt;&#xA;&lt;p&gt;&lt;em&gt;Placeholder: tables or figures on robustness and stability under degraded visuals.&lt;/em&gt;&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

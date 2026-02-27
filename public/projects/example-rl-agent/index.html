@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr" class="no-js">
+<head><script src="/portfolio/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=portfolio/livereload" data-no-instant defer></script>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Offline RL Agent for Safe Decision-Making | Aditya Ramesh</title>
+
+<meta property="og:url" content="http://localhost:1313/portfolio/projects/example-rl-agent/">
+  <meta property="og:site_name" content="Research Portfolio">
+  <meta property="og:title" content="Offline RL Agent for Safe Decision-Making">
+  <meta property="og:description" content="An offline reinforcement learning system that learns from logged data while satisfying safety constraints in deployment.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="projects">
+    <meta property="article:tag" content="RL">
+    <meta property="article:tag" content="Agents">
+    <meta property="article:tag" content="Robustness">
+
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Offline RL Agent for Safe Decision-Making">
+  <meta name="twitter:description" content="An offline reinforcement learning system that learns from logged data while satisfying safety constraints in deployment.">
+
+<link rel="canonical" href="http://localhost:1313/portfolio/projects/example-rl-agent/">
+
+
+
+  
+  <link rel="stylesheet" href="/portfolio/css/main.min.css">
+
+
+
+
+  
+  <script src="/portfolio/js/main.min.js" defer></script>
+
+
+
+
+
+</head>
+<body class="theme-light">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <header class="site-header">
+  <div class="header-inner">
+    <a class="site-name" href="/portfolio/">Aditya Ramesh</a>
+    <p class="site-tagline">Building autonomous AI agents that learn, reason, and act reliably in real environments.</p>
+    <nav class="nav">
+      
+        <a class="nav-link" href="/portfolio/projects/">Projects</a>
+      
+        <a class="nav-link" href="/portfolio/research/">Research</a>
+      
+        <a class="nav-link" href="/portfolio/about/">About</a>
+      
+    </nav>
+    <button type="button" class="dark-toggle" aria-label="Toggle dark mode" title="Toggle dark mode">
+      <span class="dark-toggle-icon" aria-hidden="true"></span>
+    </button>
+  </div>
+</header>
+
+  </header>
+  <main id="main" class="main">
+    
+<article class="page project-single">
+  <header class="page-header">
+    <h1 class="page-title">Offline RL Agent for Safe Decision-Making</h1>
+    <p class="page-desc">An offline reinforcement learning system that learns from logged data while satisfying safety constraints in deployment.</p>
+    
+      <ul class="page-tags">
+        <li>RL</li><li>Agents</li><li>Robustness</li>
+      </ul>
+    
+  </header>
+
+  <div class="project-layout">
+    
+      <aside class="toc-sidebar">
+        <nav class="toc" aria-label="Table of contents">
+          <h2 class="toc-title">Contents</h2>
+          <nav id="TableOfContents">
+  <ul>
+    <li><a href="#problem">Problem</a></li>
+    <li><a href="#why-the-problem-is-hard">Why the problem is hard</a></li>
+    <li><a href="#system-design">System design</a></li>
+    <li><a href="#architecture-diagram">Architecture diagram</a></li>
+    <li><a href="#implementation-details">Implementation details</a></li>
+    <li><a href="#experiments">Experiments</a></li>
+    <li><a href="#results">Results</a></li>
+    <li><a href="#failure-cases--debugging-insights">Failure cases / debugging insights</a></li>
+    <li><a href="#takeaways">Takeaways</a></li>
+  </ul>
+</nav>
+        </nav>
+      </aside>
+    
+    <div class="project-content page-content">
+      <h2 id="problem">Problem</h2>
+<p>Deploying reinforcement learning agents in real environments (e.g. healthcare, robotics) requires that the policy not only perform well on the training objective but also avoid catastrophic actions. Standard offline RL optimizes for expected return on the logged dataset and can produce policies that take out-of-distribution actions with high estimated value, leading to failures in deployment.</p>
+<h2 id="why-the-problem-is-hard">Why the problem is hard</h2>
+<p>Offline RL is fundamentally constrained by the distribution of the data: we cannot query arbitrary state-action pairs. Extrapolation errors in the value function lead to overestimation of actions that were rarely or never taken. Adding safety constraints (e.g. never exceed a risk threshold) couples the optimization with an unknown constraint function and makes exploration impossible, so we must rely entirely on the fixed dataset.</p>
+<h2 id="system-design">System design</h2>
+<p>We use a constrained policy optimization loop: (1) fit a conservative value function on the offline data with penalty for out-of-support actions, (2) solve for a policy that maximizes value subject to a safety critic that predicts constraint violation, (3) evaluate the policy on a held-out set and clip updates to stay near the behavior policy.</p>
+<h2 id="architecture-diagram">Architecture diagram</h2>
+
+
+
+
+<figure>
+  <img src="/images/placeholder-arch.svg" alt="" loading="lazy">
+  <figcaption>High-level pipeline: dataset → conservative Q &#43; safety critic → constrained policy.</figcaption>
+</figure>
+
+<p>(Replace with your own diagram image in <code>static/images/</code>.)</p>
+<h2 id="implementation-details">Implementation details</h2>
+<ul>
+<li><strong>Data</strong>: 1M transitions from a scripted policy; state dimension 64, action dimension 8.</li>
+<li><strong>Value / safety critics</strong>: 3-layer MLPs, 256 units, trained with TD(0) and gradient penalties to discourage large Q outside the support of the data.</li>
+<li><strong>Policy</strong>: Gaussian policy with state-dependent mean and fixed log-std; updated via constrained PPO-style objective with KL penalty toward the behavior policy.</li>
+</ul>
+
+
+<div class="callout callout-tip">
+  <p class="callout-title">Reproducibility</p>
+  <div class="callout-body">All hyperparameters and seeds are in the repo <code>configs/</code> directory. Training takes ~4h on a single GPU.</div>
+</div>
+
+<h2 id="experiments">Experiments</h2>
+<p>We compare against: (1) behavior cloning, (2) CQL, (3) our method (CQL + safety critic). Metrics: return on a fixed test suite, constraint violation rate, and action distribution shift (MMD to behavior).</p>
+<h2 id="results">Results</h2>
+<table>
+  <thead>
+      <tr>
+          <th>Method</th>
+          <th>Return (↑)</th>
+          <th>Violation rate (↓)</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Behavior clone</td>
+          <td>0.72</td>
+          <td>0.02</td>
+      </tr>
+      <tr>
+          <td>CQL</td>
+          <td>0.89</td>
+          <td>0.18</td>
+      </tr>
+      <tr>
+          <td>Ours</td>
+          <td>0.85</td>
+          <td>0.01</td>
+      </tr>
+  </tbody>
+</table>
+<p>Our method trades a small amount of return for a large reduction in constraint violations.</p>
+<h2 id="failure-cases--debugging-insights">Failure cases / debugging insights</h2>
+<ul>
+<li><strong>Initial runs</strong>: Violation rate was high. Cause: safety critic was trained on the same data as the value function and overfit to “easy” states. Fix: separate train/val split for the safety critic and early stopping.</li>
+<li><strong>Low return</strong>: Over-constraining the policy led to near-behavior cloning. We tuned the safety margin (slack) and used a schedule that relaxes the constraint slightly in later training.</li>
+</ul>
+<h2 id="takeaways">Takeaways</h2>
+<ul>
+<li>Constrained offline RL is feasible with a separate safety critic and conservative value estimation.</li>
+<li>Keeping the policy close to the behavior policy (KL penalty) is essential to avoid distribution shift and high violation rates.</li>
+<li>Debugging required careful logging of constraint violations by state type and value-estimate spread.</li>
+</ul>
+
+    </div>
+  </div>
+</article>
+
+  </main>
+  <footer class="site-footer">
+    <footer class="site-footer">
+  <div class="footer-inner">
+    <p class="footer-copy">&copy; 2026 Aditya Ramesh</p>
+  </div>
+</footer>
+
+  </footer>
+</body>
+</html>

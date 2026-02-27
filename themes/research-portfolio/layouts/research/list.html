@@ -1,0 +1,38 @@
+{{ define "main" }}
+  <article class="page list research-list">
+    <header class="page-header">
+      <h1 class="page-title">{{ .Title }}</h1>
+    </header>
+    <div class="page-content">{{ .Content }}</div>
+
+    {{ $pages := .Pages.ByDate.Reverse }}
+    {{ $byYear := $pages.GroupByDate "2006" }}
+    {{ range $byYear }}
+      <section class="research-year">
+        <h2 class="year-heading">{{ .Key }}</h2>
+        <ul class="research-list-items">
+          {{ $me := site.Params.author_name }}
+          {{ range .Pages }}
+            {{ $page := . }}
+            <li class="research-item">
+              <h3 class="research-title">
+                {{ with $page.Params.paper_url }}<a href="{{ . }}" target="_blank" rel="noopener">{{ $page.Title }}</a>{{ else }}<a href="{{ $page.RelPermalink }}">{{ $page.Title }}</a>{{ end }}
+              </h3>
+              {{ $authors := .Params.authors | default "—" }}
+              {{ if $me }}{{ $authors = replace $authors $me (printf "<strong class=\"author-me\">%s</strong>" $me) }}{{ end }}
+              <p class="research-authors">{{ $authors | safeHTML }}</p>
+              <p class="research-venue">{{ .Params.venue }}</p>
+              <div class="research-links">
+                {{ with .Params.paper_url }}<a href="{{ . }}" target="_blank" rel="noopener">Paper</a>{{ end }}
+                {{ with .Params.code_url }}<a href="{{ . }}" target="_blank" rel="noopener">Code</a>{{ end }}
+                {{ with .Params.poster_url }}<a href="{{ . }}" target="_blank" rel="noopener">Poster</a>{{ end }}
+                {{ with .Params.blog_url }}<a href="{{ . }}" target="_blank" rel="noopener">Blog</a>{{ end }}
+                <a href="{{ .RelPermalink }}">Writeup</a>
+              </div>
+            </li>
+          {{ end }}
+        </ul>
+      </section>
+    {{ end }}
+  </article>
+{{ end }}

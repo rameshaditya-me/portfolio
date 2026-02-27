@@ -1,0 +1,22 @@
+{{ define "main" }}
+  <article class="page list projects-list">
+    <header class="page-header">
+      <h1 class="page-title">{{ .Title }}</h1>
+    </header>
+    <div class="page-content">{{ .Content }}</div>
+    <div class="projects-grid">
+      {{ range .Pages }}
+        <a href="{{ .RelPermalink }}" class="card">
+          {{ with .Params.thumbnail }}
+            <div class="card-image"><img src="{{ . }}" alt="" loading="lazy"></div>
+          {{ end }}
+          <div class="card-body">
+            <h3 class="card-title">{{ .Title }}</h3>
+            <p class="card-desc">{{ .Params.description | default .Summary | plainify | truncate 120 }}</p>
+            {{ with .Params.tags }}<ul class="card-tags">{{ range . }}<li>{{ . }}</li>{{ end }}</ul>{{ end }}
+          </div>
+        </a>
+      {{ end }}
+    </div>
+  </article>
+{{ end }}

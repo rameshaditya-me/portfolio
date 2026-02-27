@@ -1,0 +1,73 @@
+# Research portfolio — Hugo + GitHub Pages
+baseURL = 'https://everywhereuser007-stack.github.io/portfolio/'
+languageCode = 'en-us'
+title = 'Research Portfolio'
+
+# GitHub Pages: publish to /docs or use gh-pages branch with public/
+# If using GitHub Actions, leave as-is. If publishing from branch, set publishDir = "docs"
+publishDir = 'public'
+
+theme = 'research-portfolio'
+
+[markup]
+  [markup.highlight]
+    anchorLineNos = false
+    codeFences = true
+    guessSyntax = true
+    hl_Lines = ''
+    lineAnchors = ''
+    lineNoStart = 1
+    lineNos = false
+    lineNumbersInTable = true
+    noClasses = false
+    style = 'github-dark'
+  [markup.goldmark]
+    [markup.goldmark.extensions]
+      definitionList = true
+      footnote = true
+      linkify = true
+      strikethrough = true
+      table = true
+    [markup.goldmark.parser]
+      attribute = true
+      autoHeadingID = true
+      autoHeadingIDType = 'github'
+  [markup.tableOfContents]
+    endLevel = 3
+    ordered = false
+    startLevel = 2
+
+[params]
+  name = 'Aditya Ramesh'
+  author_name = 'Aditya Ramesh'
+  math = false
+  tagline = 'Building autonomous AI agents that learn, reason, and act reliably in real environments.'
+  bio_short = 'AI Research Scientist focused on reinforcement learning and reliable agents. Previously at X. PhD from Y.'
+  github = 'https://github.com/everywhereuser007-stack'
+  google_scholar = 'https://scholar.google.com/citations?user=YOUR_ID'
+  cv_pdf = 'cv.pdf'
+
+[outputs]
+  home = ['HTML', 'RSS']
+
+[taxonomies]
+  tags = 'tags'
+  year = 'year'
+
+[related]
+  includeNewer = true
+  threshold = 80
+
+[menu]
+  [[menu.main]]
+    name = 'About'
+    url = '/about/'
+    weight = 40
+  [[menu.main]]
+    name = 'Projects'
+    url = '/projects/'
+    weight = 10
+  [[menu.main]]
+    name = 'Research'
+    url = '/research/'
+    weight = 20

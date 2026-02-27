@@ -1,0 +1,6 @@
+{{ $lang := .Get "lang" | default "text" }}
+{{ $title := .Get "title" }}
+<div class="shortcode-code">
+  {{ with $title }}<p class="code-title">{{ . }}</p>{{ end }}
+  <pre><code class="language-{{ $lang }}">{{ .Inner | safeHTML }}</code></pre>
+</div>

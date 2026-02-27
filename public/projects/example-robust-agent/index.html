@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr" class="no-js">
+<head><script src="/portfolio/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=portfolio/livereload" data-no-instant defer></script>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Robust Multi-Task Agent in Simulation | Aditya Ramesh</title>
+
+<meta property="og:url" content="http://localhost:1313/portfolio/projects/example-robust-agent/">
+  <meta property="og:site_name" content="Research Portfolio">
+  <meta property="og:title" content="Robust Multi-Task Agent in Simulation">
+  <meta property="og:description" content="A single policy that generalizes across multiple simulated environments with different dynamics and reward scales.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="projects">
+    <meta property="article:tag" content="Agents">
+    <meta property="article:tag" content="RL">
+    <meta property="article:tag" content="Robustness">
+
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Robust Multi-Task Agent in Simulation">
+  <meta name="twitter:description" content="A single policy that generalizes across multiple simulated environments with different dynamics and reward scales.">
+
+<link rel="canonical" href="http://localhost:1313/portfolio/projects/example-robust-agent/">
+
+
+
+  
+  <link rel="stylesheet" href="/portfolio/css/main.min.css">
+
+
+
+
+  
+  <script src="/portfolio/js/main.min.js" defer></script>
+
+
+
+
+
+</head>
+<body class="theme-light">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <header class="site-header">
+  <div class="header-inner">
+    <a class="site-name" href="/portfolio/">Aditya Ramesh</a>
+    <p class="site-tagline">Building autonomous AI agents that learn, reason, and act reliably in real environments.</p>
+    <nav class="nav">
+      
+        <a class="nav-link" href="/portfolio/projects/">Projects</a>
+      
+        <a class="nav-link" href="/portfolio/research/">Research</a>
+      
+        <a class="nav-link" href="/portfolio/about/">About</a>
+      
+    </nav>
+    <button type="button" class="dark-toggle" aria-label="Toggle dark mode" title="Toggle dark mode">
+      <span class="dark-toggle-icon" aria-hidden="true"></span>
+    </button>
+  </div>
+</header>
+
+  </header>
+  <main id="main" class="main">
+    
+<article class="page project-single">
+  <header class="page-header">
+    <h1 class="page-title">Robust Multi-Task Agent in Simulation</h1>
+    <p class="page-desc">A single policy that generalizes across multiple simulated environments with different dynamics and reward scales.</p>
+    
+      <ul class="page-tags">
+        <li>Agents</li><li>RL</li><li>Robustness</li>
+      </ul>
+    
+  </header>
+
+  <div class="project-layout">
+    
+      <aside class="toc-sidebar">
+        <nav class="toc" aria-label="Table of contents">
+          <h2 class="toc-title">Contents</h2>
+          <nav id="TableOfContents">
+  <ul>
+    <li><a href="#problem">Problem</a></li>
+    <li><a href="#why-the-problem-is-hard">Why the problem is hard</a></li>
+    <li><a href="#system-design">System design</a></li>
+    <li><a href="#implementation-details">Implementation details</a></li>
+    <li><a href="#experiments">Experiments</a></li>
+    <li><a href="#results">Results</a></li>
+    <li><a href="#takeaways">Takeaways</a></li>
+  </ul>
+</nav>
+        </nav>
+      </aside>
+    
+    <div class="project-content page-content">
+      <h2 id="problem">Problem</h2>
+<p>Training one agent that works across several related but different environments (e.g. different robot morphologies or reward scales) often fails due to negative transfer or one task dominating the gradient.</p>
+<h2 id="why-the-problem-is-hard">Why the problem is hard</h2>
+<p>Task balance, representation sharing, and distribution shift at test time make multi-task RL difficult without careful design.</p>
+<h2 id="system-design">System design</h2>
+<p>We use a shared encoder and task-specific heads, with a gradient-based task weighting (Uncertainty Weighting) and normalized rewards per task.</p>
+<h2 id="implementation-details">Implementation details</h2>
+<p>PyTorch; PPO base; 4 simulation tasks; training time ~12h on 8 CPUs.</p>
+<h2 id="experiments">Experiments</h2>
+<p>Ablations: single-task baselines, shared vs. separate encoders, with and without task weighting.</p>
+<h2 id="results">Results</h2>
+<p>Multi-task agent matches or exceeds the average of single-task agents on 3/4 tasks with a single policy.</p>
+<h2 id="takeaways">Takeaways</h2>
+<p>Reward normalization and task weighting are as important as architecture for multi-task RL; start with a small set of tasks before scaling.</p>
+
+    </div>
+  </div>
+</article>
+
+  </main>
+  <footer class="site-footer">
+    <footer class="site-footer">
+  <div class="footer-inner">
+    <p class="footer-copy">&copy; 2026 Aditya Ramesh</p>
+  </div>
+</footer>
+
+  </footer>
+</body>
+</html>

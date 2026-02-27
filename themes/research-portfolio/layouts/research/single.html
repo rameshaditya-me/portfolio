@@ -1,0 +1,21 @@
+{{ define "main" }}
+<article class="page research-single">
+  <header class="page-header">
+    <h1 class="page-title">{{ .Title }}</h1>
+    {{ $authors := .Params.authors | default "—" }}
+    {{ if site.Params.author_name }}{{ $authors = replace $authors site.Params.author_name (printf "<strong class=\"author-me\">%s</strong>" site.Params.author_name) }}{{ end }}
+    <p class="research-authors">{{ $authors | safeHTML }}</p>
+    <p class="research-venue">{{ .Params.venue }}</p>
+    <div class="research-links">
+      {{ with .Params.paper_url }}<a href="{{ . }}" target="_blank" rel="noopener">Paper</a>{{ end }}
+      {{ with .Params.code_url }}<a href="{{ . }}" target="_blank" rel="noopener">Code</a>{{ end }}
+      {{ with .Params.poster_url }}<a href="{{ . }}" target="_blank" rel="noopener">Poster</a>{{ end }}
+      {{ with .Params.blog_url }}<a href="{{ . }}" target="_blank" rel="noopener">Blog</a>{{ end }}
+    </div>
+  </header>
+  <div class="page-content research-writeup">
+    <h2 class="writeup-heading">Writeup</h2>
+    {{ .Content }}
+  </div>
+</article>
+{{ end }}

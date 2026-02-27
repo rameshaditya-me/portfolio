@@ -1,0 +1,14 @@
+<header class="site-header">
+  <div class="header-inner">
+    <a class="site-name" href="{{ site.Home.RelPermalink }}">{{ site.Params.name }}</a>
+    <p class="site-tagline">{{ site.Params.tagline }}</p>
+    <nav class="nav">
+      {{ range site.Menus.main }}
+        <a class="nav-link{{ if $.IsMenuCurrent .Menu . }} active{{ end }}" href="{{ .URL }}">{{ .Name }}</a>
+      {{ end }}
+    </nav>
+    <button type="button" class="dark-toggle" aria-label="Toggle dark mode" title="Toggle dark mode">
+      <span class="dark-toggle-icon" aria-hidden="true"></span>
+    </button>
+  </div>
+</header>

@@ -1,0 +1,5 @@
+{{ $js := resources.Get "js/main.js" }}
+{{ if $js }}
+  {{ $js = $js | resources.Minify }}
+  <script src="{{ $js.RelPermalink }}" defer></script>
+{{ end }}
