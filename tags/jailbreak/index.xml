@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Jailbreak on Research Portfolio</title>
+    <link>http://localhost:1313/portfolio/tags/jailbreak/</link>
+    <description>Recent content in Jailbreak on Research Portfolio</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <atom:link href="http://localhost:1313/portfolio/tags/jailbreak/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Multi-Turn Jailbreak Datasets and Post-Training Hardening (SFT &#43; DPO)</title>
+      <link>http://localhost:1313/portfolio/projects/jailbreak-datasets-posttraining-hardening/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/portfolio/projects/jailbreak-datasets-posttraining-hardening/</guid>
+      <description>&lt;h2 id=&#34;problem&#34;&gt;Problem&lt;/h2&gt;&#xA;&lt;p&gt;&lt;em&gt;Placeholder: the need for robust multi-turn jailbreak defenses and compliant refusal/redirection.&lt;/em&gt;&lt;/p&gt;&#xA;&lt;h2 id=&#34;why-the-problem-is-hard&#34;&gt;Why the problem is hard&lt;/h2&gt;&#xA;&lt;p&gt;&lt;em&gt;Placeholder: why automated pipeline design and post-training alignment for jailbreaks are challenging.&lt;/em&gt;&lt;/p&gt;&#xA;&lt;h2 id=&#34;system-design&#34;&gt;System design&lt;/h2&gt;&#xA;&lt;p&gt;&lt;em&gt;Placeholder: SoC attack pipeline → dataset transformation → SFT + DPO workflow.&lt;/em&gt;&lt;/p&gt;&#xA;&lt;h2 id=&#34;architecture-diagram&#34;&gt;Architecture diagram&lt;/h2&gt;&#xA;&#xA;&#xA;&#xA;&#xA;&lt;figure&gt;&#xA;  &lt;img src=&#34;http://localhost:1313/portfolio/images/placeholder-arch.svg&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&#xA;  &lt;figcaption&gt;Caption for your diagram.&lt;/figcaption&gt;&#xA;&lt;/figure&gt;&#xA;&#xA;&lt;h2 id=&#34;implementation-details&#34;&gt;Implementation details&lt;/h2&gt;&#xA;&lt;p&gt;&lt;em&gt;Placeholder: attack construction, (query, refusal/redirection) data format, SFT/DPO setup.&lt;/em&gt;&lt;/p&gt;&#xA;&lt;h2 id=&#34;experiments&#34;&gt;Experiments&lt;/h2&gt;&#xA;&lt;p&gt;&lt;em&gt;Placeholder: baselines, multi-turn jailbreak benchmarks, refusal/redirection quality metrics.&lt;/em&gt;&lt;/p&gt;&#xA;&lt;h2 id=&#34;results&#34;&gt;Results&lt;/h2&gt;&#xA;&lt;p&gt;&lt;em&gt;Placeholder: tables or figures on attack success rate vs. defense, compliance, and usability.&lt;/em&gt;&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Retrieval on Research Portfolio</title>
+    <link>http://localhost:1313/portfolio/tags/retrieval/</link>
+    <description>Recent content in Retrieval on Research Portfolio</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <atom:link href="http://localhost:1313/portfolio/tags/retrieval/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>PEFT Defense Agent and Real-Time Output Gating Under Adversarial Retrieval</title>
+      <link>http://localhost:1313/portfolio/projects/peft-defense-agent-output-gating/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/portfolio/projects/peft-defense-agent-output-gating/</guid>
+      <description>&lt;h2 id=&#34;problem&#34;&gt;Problem&lt;/h2&gt;&#xA;&lt;p&gt;&lt;em&gt;Placeholder: adversarial retrieval corruption and need for real-time gating without losing task utility.&lt;/em&gt;&lt;/p&gt;&#xA;&lt;h2 id=&#34;why-the-problem-is-hard&#34;&gt;Why the problem is hard&lt;/h2&gt;&#xA;&lt;p&gt;&lt;em&gt;Placeholder: why discriminating safe vs. unsafe states from (query, context) and gating in real time are challenging.&lt;/em&gt;&lt;/p&gt;&#xA;&lt;h2 id=&#34;system-design&#34;&gt;System design&lt;/h2&gt;&#xA;&lt;p&gt;&lt;em&gt;Placeholder: PEFT SFT on (query, context) → classifier → output gating layer.&lt;/em&gt;&lt;/p&gt;&#xA;&lt;h2 id=&#34;architecture-diagram&#34;&gt;Architecture diagram&lt;/h2&gt;&#xA;&#xA;&#xA;&#xA;&#xA;&lt;figure&gt;&#xA;  &lt;img src=&#34;http://localhost:1313/portfolio/images/placeholder-arch.svg&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&#xA;  &lt;figcaption&gt;Caption for your diagram.&lt;/figcaption&gt;&#xA;&lt;/figure&gt;&#xA;&#xA;&lt;h2 id=&#34;implementation-details&#34;&gt;Implementation details&lt;/h2&gt;&#xA;&lt;p&gt;&lt;em&gt;Placeholder: PEFT setup, training data, gating logic, corruption scenarios.&lt;/em&gt;&lt;/p&gt;&#xA;&lt;h2 id=&#34;experiments&#34;&gt;Experiments&lt;/h2&gt;&#xA;&lt;p&gt;&lt;em&gt;Placeholder: attack success with/without gating, task accuracy under corruption, latency.&lt;/em&gt;&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

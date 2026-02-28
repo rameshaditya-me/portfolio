@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Home on Research Portfolio</title><link>https://everywhereuser007-stack.github.io/portfolio/</link><description>Recent content in Home on Research Portfolio</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Thu, 01 Jan 2026 00:00:00 +0000</lastBuildDate><atom:link href="https://everywhereuser007-stack.github.io/portfolio/index.xml" rel="self" type="application/rss+xml"/><item><title>Graph-Theoretic Intrinsic Reward: Guiding RL with Effective Resistance</title><link>https://everywhereuser007-stack.github.io/portfolio/research/chauhan2026-graph-theoretic-iclr/</link><pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate><guid>https://everywhereuser007-stack.github.io/portfolio/research/chauhan2026-graph-theoretic-iclr/</guid><description>&lt;p&gt;&lt;strong&gt;BibTeX&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bibtex" data-lang="bibtex"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nc"&gt;@inproceedings&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="nl"&gt;chauhan2026graphtheoretic&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="na"&gt;title&lt;/span&gt;&lt;span class="p"&gt;=&lt;/span&gt;&lt;span class="s"&gt;{Graph-Theoretic Intrinsic Reward: Guiding {RL} with Effective Resistance}&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="na"&gt;author&lt;/span&gt;&lt;span class="p"&gt;=&lt;/span&gt;&lt;span class="s"&gt;{Jatin Chauhan and Shivam Bhardwaj and Aditya Saibewar and Aditya Ramesh and Sadbhavana Babar and Manohar Kaul}&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="na"&gt;booktitle&lt;/span&gt;&lt;span class="p"&gt;=&lt;/span&gt;&lt;span class="s"&gt;{The Fourteenth International Conference on Learning Representations}&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="na"&gt;year&lt;/span&gt;&lt;span class="p"&gt;=&lt;/span&gt;&lt;span class="s"&gt;{2026}&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="na"&gt;url&lt;/span&gt;&lt;span class="p"&gt;=&lt;/span&gt;&lt;span class="s"&gt;{https://openreview.net/forum?id=W8bKDPf1Ko}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description></item><item><title>Efficient Jailbreak Attack Sequences on Large Language Models via Multi-Armed Bandit-based Context Switching</title><link>https://everywhereuser007-stack.github.io/portfolio/research/ramesh2025-jailbreak-iclr/</link><pubDate>Wed, 01 Jan 2025 00:00:00 +0000</pubDate><guid>https://everywhereuser007-stack.github.io/portfolio/research/ramesh2025-jailbreak-iclr/</guid><description/></item><item><title>Fixed Budget Kernel LMS based Estimator using Random Fourier Features</title><link>https://everywhereuser007-stack.github.io/portfolio/research/ramesh2020-radar-rff-klms/</link><pubDate>Fri, 01 May 2020 00:00:00 +0000</pubDate><guid>https://everywhereuser007-stack.github.io/portfolio/research/ramesh2020-radar-rff-klms/</guid><description>&lt;p&gt;Hi&lt;/p&gt;</description></item><item><title>Diffusion Transformer with LoRA and Action-Consistency for Robust Embodied Control</title><link>https://everywhereuser007-stack.github.io/portfolio/projects/diffusion-transformer-embodied-robustness/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://everywhereuser007-stack.github.io/portfolio/projects/diffusion-transformer-embodied-robustness/</guid><description>&lt;h2 id="problem"&gt;Problem&lt;/h2&gt;
+&lt;p&gt;&lt;em&gt;Placeholder: embodied control under RGB perturbations and degraded visual inputs.&lt;/em&gt;&lt;/p&gt;
+&lt;h2 id="why-the-problem-is-hard"&gt;Why the problem is hard&lt;/h2&gt;
+&lt;p&gt;&lt;em&gt;Placeholder: why perception robustness and action consistency under distribution shift are difficult.&lt;/em&gt;&lt;/p&gt;
+&lt;h2 id="system-design"&gt;System design&lt;/h2&gt;
+&lt;p&gt;&lt;em&gt;Placeholder: Diffusion Transformer + LoRA + action-consistency loss → control policy.&lt;/em&gt;&lt;/p&gt;
+&lt;h2 id="architecture-diagram"&gt;Architecture diagram&lt;/h2&gt;
+
+
+
+
+&lt;figure&gt;
+ &lt;img src="https://everywhereuser007-stack.github.io/portfolio/images/placeholder-arch.svg" alt="" loading="lazy"&gt;
+ &lt;figcaption&gt;Caption for your diagram.&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;h2 id="implementation-details"&gt;Implementation details&lt;/h2&gt;
+&lt;p&gt;&lt;em&gt;Placeholder: DiT backbone, LoRA config, action-consistency formulation, perturbation augmentation.&lt;/em&gt;&lt;/p&gt;
+&lt;h2 id="experiments"&gt;Experiments&lt;/h2&gt;
+&lt;p&gt;&lt;em&gt;Placeholder: perturbation types (illumination, blur, occlusion), baselines, control metrics.&lt;/em&gt;&lt;/p&gt;
+&lt;h2 id="results"&gt;Results&lt;/h2&gt;
+&lt;p&gt;&lt;em&gt;Placeholder: tables or figures on robustness and stability under degraded visuals.&lt;/em&gt;&lt;/p&gt;</description></item><item><title>Reconstructing Modern Reinforcement Learning</title><link>https://everywhereuser007-stack.github.io/portfolio/projects/reconstructing-modern-reinforcement-learning/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://everywhereuser007-stack.github.io/portfolio/projects/reconstructing-modern-reinforcement-learning/</guid><description>&lt;p&gt;Reinforcement learning papers often present a misleading picture of the field.
+Algorithms appear as independent inventions — DQN, PPO, SAC, HER — each with its own notation, diagrams, and benchmarks. From a distance this looks like steady progress. From close up it feels like memorizing a zoo.&lt;/p&gt;
+&lt;p&gt;This series takes a different position:&lt;/p&gt;
+&lt;p&gt;Modern reinforcement learning is not a sequence of new ideas.
+It is a sequence of &lt;em&gt;repairs&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;Every major algorithm exists because a simpler learning rule failed under a specific violated assumption. Once you identify the assumption that broke, the algorithm becomes obvious. Once you don’t, the field looks mysterious.&lt;/p&gt;</description></item></channel></rss>

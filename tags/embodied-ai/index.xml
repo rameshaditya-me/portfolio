@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Embodied AI on Research Portfolio</title><link>https://everywhereuser007-stack.github.io/portfolio/tags/embodied-ai/</link><description>Recent content in Embodied AI on Research Portfolio</description><generator>Hugo</generator><language>en-us</language><atom:link href="https://everywhereuser007-stack.github.io/portfolio/tags/embodied-ai/index.xml" rel="self" type="application/rss+xml"/><item><title>Diffusion Transformer with LoRA and Action-Consistency for Robust Embodied Control</title><link>https://everywhereuser007-stack.github.io/portfolio/projects/diffusion-transformer-embodied-robustness/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://everywhereuser007-stack.github.io/portfolio/projects/diffusion-transformer-embodied-robustness/</guid><description>&lt;h2 id="problem"&gt;Problem&lt;/h2&gt;
+&lt;p&gt;&lt;em&gt;Placeholder: embodied control under RGB perturbations and degraded visual inputs.&lt;/em&gt;&lt;/p&gt;
+&lt;h2 id="why-the-problem-is-hard"&gt;Why the problem is hard&lt;/h2&gt;
+&lt;p&gt;&lt;em&gt;Placeholder: why perception robustness and action consistency under distribution shift are difficult.&lt;/em&gt;&lt;/p&gt;
+&lt;h2 id="system-design"&gt;System design&lt;/h2&gt;
+&lt;p&gt;&lt;em&gt;Placeholder: Diffusion Transformer + LoRA + action-consistency loss → control policy.&lt;/em&gt;&lt;/p&gt;
+&lt;h2 id="architecture-diagram"&gt;Architecture diagram&lt;/h2&gt;
+
+
+
+
+&lt;figure&gt;
+ &lt;img src="https://everywhereuser007-stack.github.io/portfolio/images/placeholder-arch.svg" alt="" loading="lazy"&gt;
+ &lt;figcaption&gt;Caption for your diagram.&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;h2 id="implementation-details"&gt;Implementation details&lt;/h2&gt;
+&lt;p&gt;&lt;em&gt;Placeholder: DiT backbone, LoRA config, action-consistency formulation, perturbation augmentation.&lt;/em&gt;&lt;/p&gt;
+&lt;h2 id="experiments"&gt;Experiments&lt;/h2&gt;
+&lt;p&gt;&lt;em&gt;Placeholder: perturbation types (illumination, blur, occlusion), baselines, control metrics.&lt;/em&gt;&lt;/p&gt;
+&lt;h2 id="results"&gt;Results&lt;/h2&gt;
+&lt;p&gt;&lt;em&gt;Placeholder: tables or figures on robustness and stability under degraded visuals.&lt;/em&gt;&lt;/p&gt;</description></item></channel></rss>

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr" class="no-js">
+<head><script src="/portfolio/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=portfolio/livereload" data-no-instant defer></script>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>LLM Evaluation Pipeline for Reasoning Tasks | Aditya Ramesh</title>
+
+<meta property="og:url" content="http://localhost:1313/portfolio/projects/example-llm-eval/">
+  <meta property="og:site_name" content="Research Portfolio">
+  <meta property="og:title" content="LLM Evaluation Pipeline for Reasoning Tasks">
+  <meta property="og:description" content="An automated pipeline for evaluating large language models on chain-of-thought and tool-use benchmarks with reproducibility and reporting.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="projects">
+    <meta property="article:tag" content="LLM">
+    <meta property="article:tag" content="Evaluation">
+
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="LLM Evaluation Pipeline for Reasoning Tasks">
+  <meta name="twitter:description" content="An automated pipeline for evaluating large language models on chain-of-thought and tool-use benchmarks with reproducibility and reporting.">
+
+<link rel="canonical" href="http://localhost:1313/portfolio/projects/example-llm-eval/">
+
+
+
+  
+  <link rel="stylesheet" href="/portfolio/css/main.min.css">
+
+
+
+
+  
+  <script src="/portfolio/js/main.min.js" defer></script>
+
+
+
+
+
+</head>
+<body class="theme-light">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <header class="site-header">
+  <div class="header-inner">
+    <a class="site-name" href="/portfolio/">Aditya Ramesh</a>
+    <p class="site-tagline">Building autonomous AI agents that learn, reason, and act reliably in real environments.</p>
+    <nav class="nav">
+      
+        <a class="nav-link" href="/portfolio/projects/">Projects</a>
+      
+        <a class="nav-link" href="/portfolio/research/">Research</a>
+      
+        <a class="nav-link" href="/portfolio/about/">About</a>
+      
+    </nav>
+    <button type="button" class="dark-toggle" aria-label="Toggle dark mode" title="Toggle dark mode">
+      <span class="dark-toggle-icon" aria-hidden="true"></span>
+    </button>
+  </div>
+</header>
+
+  </header>
+  <main id="main" class="main">
+    
+<article class="page project-single">
+  <header class="page-header">
+    <h1 class="page-title">LLM Evaluation Pipeline for Reasoning Tasks</h1>
+    <p class="page-desc">An automated pipeline for evaluating large language models on chain-of-thought and tool-use benchmarks with reproducibility and reporting.</p>
+    
+      <ul class="page-tags">
+        <li>LLM</li><li>Evaluation</li>
+      </ul>
+    
+  </header>
+
+  <div class="project-layout">
+    
+      <aside class="toc-sidebar">
+        <nav class="toc" aria-label="Table of contents">
+          <h2 class="toc-title">Contents</h2>
+          <nav id="TableOfContents">
+  <ul>
+    <li><a href="#problem">Problem</a></li>
+    <li><a href="#why-the-problem-is-hard">Why the problem is hard</a></li>
+    <li><a href="#system-design">System design</a></li>
+    <li><a href="#implementation-details">Implementation details</a></li>
+    <li><a href="#experiments">Experiments</a></li>
+    <li><a href="#results">Results</a></li>
+    <li><a href="#takeaways">Takeaways</a></li>
+  </ul>
+</nav>
+        </nav>
+      </aside>
+    
+    <div class="project-content page-content">
+      <h2 id="problem">Problem</h2>
+<p>Evaluating LLMs on reasoning and tool-use benchmarks requires running many prompts, parsing outputs, and aggregating metrics. Doing this in a reproducible way across model versions and datasets is error-prone when scripts are one-off.</p>
+<h2 id="why-the-problem-is-hard">Why the problem is hard</h2>
+<p>Output formats vary by model and task; grading often needs a judge model or regex; and results should be versioned with the model and dataset for comparison.</p>
+<h2 id="system-design">System design</h2>
+<p>We use a DAG-based pipeline (config-driven): load dataset → generate responses (with caching) → run graders → aggregate and write reports. All steps are deterministic and keyed by (model_id, dataset_version, prompt_template).</p>
+<h2 id="implementation-details">Implementation details</h2>
+<p>Python + YAML configs; parallel execution with a process pool; results stored in SQLite for quick comparison across runs.</p>
+<h2 id="experiments">Experiments</h2>
+<p>We run on three reasoning benchmarks and two tool-use benchmarks; report accuracy and cost per run.</p>
+<h2 id="results">Results</h2>
+<p>Pipeline reduces evaluation time from ad-hoc scripts by ~5x and ensures every reported number is reproducible from a config and commit.</p>
+<h2 id="takeaways">Takeaways</h2>
+<p>Config-driven pipelines and caching are essential for reliable LLM evaluation; invest in a small schema for (model, dataset, metric) early.</p>
+
+    </div>
+  </div>
+</article>
+
+  </main>
+  <footer class="site-footer">
+    <footer class="site-footer">
+  <div class="footer-inner">
+    <p class="footer-copy">&copy; 2026 Aditya Ramesh</p>
+  </div>
+</footer>
+
+  </footer>
+</body>
+</html>

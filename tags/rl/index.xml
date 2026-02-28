@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>RL on Research Portfolio</title>
+    <link>http://localhost:1313/portfolio/tags/rl/</link>
+    <description>Recent content in RL on Research Portfolio</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 15 May 2024 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/portfolio/tags/rl/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Implementing Conservative Q-Learning from Scratch</title>
+      <link>http://localhost:1313/portfolio/projects/implementing-cql/</link>
+      <pubDate>Wed, 15 May 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/portfolio/projects/implementing-cql/</guid>
+      <description>&lt;p&gt;Technical articles support &lt;strong&gt;equations&lt;/strong&gt; and code. Enable math in front matter with &lt;code&gt;math: true&lt;/code&gt; for KaTeX.&lt;/p&gt;&#xA;&lt;h2 id=&#34;goal&#34;&gt;Goal&lt;/h2&gt;&#xA;&lt;p&gt;We walk through a minimal implementation of Conservative Q-Learning (CQL) for offline RL. The key idea is to penalize the Q-function for assigning high values to actions that are unlikely under the behavior policy, reducing overestimation.&lt;/p&gt;&#xA;&lt;h2 id=&#34;main-equation&#34;&gt;Main equation&lt;/h2&gt;&#xA;&lt;p&gt;The CQL loss adds a regularizer to the standard TD loss:&lt;/p&gt;&#xA;&lt;p&gt;$$&#xA;\mathcal{L}&lt;em&gt;{\mathrm{CQL}} = \alpha \cdot \mathbb{E}&lt;/em&gt;{s \sim \mathcal{D}}\left[ \log \sum_a \exp(Q(s,a)) - \mathbb{E}&lt;em&gt;{a \sim \pi&lt;/em&gt;\beta(a|s)}[Q(s,a)] \right] + \mathcal{L}_{\mathrm{TD}}&#xA;$$&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Offline RL Agent for Safe Decision-Making</title>
+      <link>http://localhost:1313/portfolio/projects/example-rl-agent/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/portfolio/projects/example-rl-agent/</guid>
+      <description>&lt;h2 id=&#34;problem&#34;&gt;Problem&lt;/h2&gt;&#xA;&lt;p&gt;Deploying reinforcement learning agents in real environments (e.g. healthcare, robotics) requires that the policy not only perform well on the training objective but also avoid catastrophic actions. Standard offline RL optimizes for expected return on the logged dataset and can produce policies that take out-of-distribution actions with high estimated value, leading to failures in deployment.&lt;/p&gt;&#xA;&lt;h2 id=&#34;why-the-problem-is-hard&#34;&gt;Why the problem is hard&lt;/h2&gt;&#xA;&lt;p&gt;Offline RL is fundamentally constrained by the distribution of the data: we cannot query arbitrary state-action pairs. Extrapolation errors in the value function lead to overestimation of actions that were rarely or never taken. Adding safety constraints (e.g. never exceed a risk threshold) couples the optimization with an unknown constraint function and makes exploration impossible, so we must rely entirely on the fixed dataset.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Robust Multi-Task Agent in Simulation</title>
+      <link>http://localhost:1313/portfolio/projects/example-robust-agent/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/portfolio/projects/example-robust-agent/</guid>
+      <description>&lt;h2 id=&#34;problem&#34;&gt;Problem&lt;/h2&gt;&#xA;&lt;p&gt;Training one agent that works across several related but different environments (e.g. different robot morphologies or reward scales) often fails due to negative transfer or one task dominating the gradient.&lt;/p&gt;&#xA;&lt;h2 id=&#34;why-the-problem-is-hard&#34;&gt;Why the problem is hard&lt;/h2&gt;&#xA;&lt;p&gt;Task balance, representation sharing, and distribution shift at test time make multi-task RL difficult without careful design.&lt;/p&gt;&#xA;&lt;h2 id=&#34;system-design&#34;&gt;System design&lt;/h2&gt;&#xA;&lt;p&gt;We use a shared encoder and task-specific heads, with a gradient-based task weighting (Uncertainty Weighting) and normalized rewards per task.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
