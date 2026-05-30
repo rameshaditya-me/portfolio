@@ -11,7 +11,6 @@ Static portfolio built on the [Clarity](https://shikun.io/projects/clarity) temp
 ## Preview locally
 
 ```bash
-cd clarity-template
 python3 -m http.server 8080
 ```
 
@@ -19,6 +18,6 @@ Open http://localhost:8080
 
 ## Deploy
 
-Push to `main`. GitHub Actions (`.github/workflows/pages.yml`) publishes this folder to GitHub Pages.
+Push to `main`. GitHub Actions (`.github/workflows/pages.yml`) publishes the repository root (including `index.html`) to GitHub Pages.
 
 In the repo **Settings → Pages**, set **Source** to **GitHub Actions**.
