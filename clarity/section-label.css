@@ -1,0 +1,23 @@
+/* Simple text links on inner pages (Home · Research · …) */
+.page-nav-links {
+  padding-top: 1.25rem;
+  padding-bottom: 0;
+}
+
+.page-nav-links a {
+  color: #304463;
+  text-decoration: none;
+}
+
+.page-nav-links a:hover {
+  text-decoration: underline;
+}
+
+/* Numbered section labels (e.g. 01 / Background), inspired by shikun.io */
+.section-label {
+  font-size: 1.15rem;
+  font-weight: 600;
+  margin: 0.25rem 0 1rem 0;
+  color: #304463;
+  letter-spacing: 0.02em;
+}

@@ -1,5 +1,11 @@
-document.addEventListener('DOMContentLoaded', function() {
+window.initClarityNavbar = function () {
+    document.querySelectorAll('.nav-container').forEach(function (el) {
+        el.remove();
+    });
+
     const style = document.createElement('style');
+    if (!document.getElementById('clarity-navbar-styles')) {
+        style.id = 'clarity-navbar-styles';
     style.textContent = `
         .nav-container {
             position: fixed;
@@ -226,7 +232,8 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }
     `;
-    document.head.appendChild(style);
+        document.head.appendChild(style);
+    }
 
     const nav = document.createElement('nav');
     nav.className = 'nav-container collapsed';
@@ -246,16 +253,18 @@ document.addEventListener('DOMContentLoaded', function() {
     `;
     document.body.appendChild(nav);
 
-    // Get all h1 and h2 elements within container blog main and populate the navbar
-    const h1Elements = Array.from(document.querySelectorAll('.container.blog.main h1'));
     const navList = nav.querySelector('.nav-list');
-    
+
+    function getH1Elements() {
+        return Array.from(document.querySelectorAll('.container.blog.main h1'));
+    }
+
     function resetNavbarState() {
         nav.classList.remove('expanded');
         document.body.style.overflow = '';
     }
 
-    h1Elements.forEach((h1) => {
+    getH1Elements().forEach((h1) => {
         // Add h1 element
         const h1Item = document.createElement('li');
         h1Item.className = 'nav-item h1';
@@ -322,6 +331,8 @@ document.addEventListener('DOMContentLoaded', function() {
         let activeH1 = null;
         let activeH2 = null;
         const scrollPosition = window.scrollY + 10; // Add small offset for better detection
+
+        const h1Elements = getH1Elements();
 
         // Find active H1 section
         h1Elements.forEach((h1, index) => {
@@ -425,14 +436,23 @@ document.addEventListener('DOMContentLoaded', function() {
         ticking = false;
     }
 
-    window.addEventListener('scroll', () => {
-        if (!ticking) {
-            window.requestAnimationFrame(() => {
-                updateNavbar();
-            });
-            ticking = true;
-        }
-    });
+    if (!window._clarityNavbarScrollBound) {
+        window.addEventListener('scroll', () => {
+            if (!ticking) {
+                window.requestAnimationFrame(() => {
+                    updateNavbar();
+                });
+                ticking = true;
+            }
+        });
+        window._clarityNavbarScrollBound = true;
+    }
 
     updateNavbar();
+};
+
+document.addEventListener('DOMContentLoaded', function () {
+    if (!document.getElementById('page-sections')) {
+        window.initClarityNavbar();
+    }
 });

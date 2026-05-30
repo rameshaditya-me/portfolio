@@ -1,78 +1,25 @@
-<html lang="en">
+<html lang="en-GB">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Research Portfolio</title>
+    <title>Aditya Ramesh</title>
     <meta name="description" content="Research portfolio">
     <meta name="referrer" content="no-referrer-when-downgrade">
     <meta name="robots" content="all">
 
     <link rel="stylesheet" type="text/css" media="all" href="assets/stylesheets/main_free.css" />
-    <link rel="stylesheet" type="text/css" media="all" href="clarity/clarity.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/foundation.min.css">
+    <link rel="stylesheet" type="text/css" media="all" href="clarity/site-home.css" />
     <link href="assets/fontawesome-free-7.2.0-web/css/all.min.css" rel="stylesheet">
-    <script type="text/x-mathjax-config">
-        MathJax.Hub.Config({
-            "HTML-CSS": {
-              scale: 95,
-              fonts: ["Gyre-Pagella"],
-              imageFont: null,
-              undefinedFamily: "'Arial Unicode MS', cmbright"
-            },
-            tex2jax: {
-                inlineMath: [ ['$','$'], ["\\(","\\)"] ],
-                processEscapes: true
-              }
-          });
-    </script>
-    <script type="text/javascript"
-    src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-    </script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/js-yaml@4/dist/js-yaml.min.js"></script>
 </head>
 
-<body>
-    <div class="container blog" id="first-content" style="background-color: #E0E4E6;">
-        <div class="blog-title no-cover">
-            <div class="blog-intro">
-                <div>
-                    <h1 class="title">Your Name</h1>
-                    <p class="author">Your Affiliation</p>
-                    <p class="abstract">
-                        Add a short bio or project summary here.
-                    </p>
-                    <div class="info">
-                        <div>
-                            <a href="#" class="button icon" style="background-color: rgba(255, 255, 255, 0.2)">Paper <i class="fa-regular fa-file-lines"></i></a>
-                            &nbsp;&nbsp;
-                            <a href="#" class="button icon" style="background-color: rgba(255, 255, 255, 0.2)">Code <i class="fa-solid fa-code"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="info">
-                    <p>Venue / Year</p>
-                </div>
-            </div>
-        </div>
-    </div>
+<body data-page="landing">
+    <header id="site-topnav"></header>
+    <main id="home-landing" class="shikun-landing"></main>
+    <div id="site-footer"></div>
 
-    <div class="container blog main first" id="blog-main">
-        <h1>Introduction</h1>
-        <p class="text">Add your content here.</p>
-    </div>
-
-    <footer>
-        <div class="container">
-            <p>
-                Built with the <a href="https://shikun.io/projects/clarity">Clarity Template</a> by <a href="https://shikun.io/">Shikun Liu</a>.
-            </p>
-        </div>
-    </footer>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/highlight.min.js"></script>
-    <script>hljs.initHighlightingOnLoad();</script>
-    <script src="clarity/clarity.js"></script>
-    <script src="assets/scripts/main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="assets/scripts/content.js"></script>
 </body>
 </html>
