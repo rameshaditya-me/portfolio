@@ -24,7 +24,9 @@
 body[data-page="landing"],
 body[data-page="about"],
 body[data-page="projects"],
-body[data-page="research"] {
+body[data-page="research"],
+body[data-page="notebooks"],
+body[data-page="notebook"] {
   background: var(--shikun-bg);
 }
 
@@ -116,9 +118,68 @@ body[data-page="about"] .shikun-topnav-links a.active::after {
 /* —— Landing (index) —— */
 .shikun-landing {
   background: var(--shikun-bg);
-  min-height: calc(100vh - 80px);
+  min-height: auto;
   display: flex;
   align-items: center;
+}
+
+.shikun-home-notebooks-inner {
+  max-width: var(--shikun-nav-max);
+  margin: 0 auto;
+  padding: 0 2rem 5rem;
+}
+
+body[data-page="landing"] .shikun-home-notebooks .shikun-pubs-heading {
+  margin-top: 0;
+}
+
+/* —— Notebook viewer —— */
+.shikun-notebook-back {
+  margin: 0 0 1.5rem 0;
+  font-size: 0.95rem;
+}
+
+.shikun-notebook-back a {
+  color: var(--shikun-text);
+  text-decoration: none;
+}
+
+.shikun-notebook-back a:hover {
+  text-decoration: underline;
+}
+
+.shikun-notebook-series {
+  margin: -1.5rem 0 1.5rem 0;
+  color: var(--shikun-muted);
+  font-size: 1rem;
+}
+
+.shikun-notebook-links {
+  margin-bottom: 1.75rem;
+}
+
+.shikun-notebook-link-btn {
+  background-color: #304463 !important;
+  color: #fff !important;
+  margin-bottom: 0;
+}
+
+.shikun-notebook-embed {
+  margin-bottom: 1rem;
+}
+
+.shikun-notebook-embed iframe {
+  display: block;
+  width: 100%;
+  height: min(85vh, 1200px);
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background: #fff;
+}
+
+.shikun-notebook-embed-fallback {
+  font-size: 0.95rem;
+  color: #555;
 }
 
 .shikun-landing-inner {

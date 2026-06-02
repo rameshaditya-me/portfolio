@@ -18,6 +18,9 @@ nav:
   - label: Projects
     page: projects
     href: projects.html
+  - label: Notebooks
+    page: notebooks
+    href: index.html#notebooks
   - label: About
     page: about
     href: about.html
@@ -35,6 +38,8 @@ page_titles:
   landing: Aditya Ramesh
   research: Research — Aditya Ramesh
   projects: Projects — Aditya Ramesh
+  notebooks: Notebooks — Aditya Ramesh
   about: About — Aditya Ramesh
+  notebook: Notebook — Aditya Ramesh
   paper: Paper — Aditya Ramesh
 ---

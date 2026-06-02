@@ -6,10 +6,13 @@
   const PAGE = document.body.dataset.page || "landing";
   const PAPER_SOURCE = document.body.dataset.source;
 
+  const NOTEBOOKS_PATH = "content/pages/notebooks.md";
+
   const PAGE_CONTENT = {
     about: "content/pages/about.md",
     projects: "content/pages/projects.md",
     research: "content/pages/projects.md",
+    notebooks: NOTEBOOKS_PATH,
   };
 
   const ICONS = {
@@ -180,12 +183,20 @@
     return `<div class="shikun-page"><h1 class="shikun-page-title">${heading}</h1>${blocks}</div>`;
   }
 
-  function paperSrcFromUrl(url) {
+  function srcFromUrl(url, prefix) {
     if (!url || typeof url !== "string") return null;
     const match = url.match(/[?&]src=([^&]+)/);
     if (match) return decodeURIComponent(match[1]);
-    if (url.startsWith("content/papers/") && url.endsWith(".md")) return url;
+    if (url.startsWith(prefix) && url.endsWith(".md")) return url;
     return null;
+  }
+
+  function paperSrcFromUrl(url) {
+    return srcFromUrl(url, "content/papers/");
+  }
+
+  function notebookSrcFromUrl(url) {
+    return srcFromUrl(url, "content/notebooks/");
   }
 
   async function resolveProjectCover(project) {
@@ -270,6 +281,95 @@
         <h2 class="shikun-pubs-heading">Selected Publications</h2>
         <hr class="shikun-pubs-rule">
         <div class="shikun-pubs-list">${pubs}</div>
+      </div>`;
+  }
+
+  function renderNotebooksList(meta, { wrapSection = false } = {}) {
+    const heading = escapeHtml(meta.section_heading || meta.page_heading || "Notebooks");
+    const items = (meta.notebooks || []).map(renderPublication).join("");
+    const inner = `
+        <h2 class="shikun-pubs-heading" id="notebooks-heading">${heading}</h2>
+        <hr class="shikun-pubs-rule">
+        <div class="shikun-pubs-list">${items}</div>`;
+
+    if (wrapSection) {
+      return `
+      <section class="shikun-home-notebooks" id="notebooks" aria-labelledby="notebooks-heading">
+        <div class="shikun-home-notebooks-inner">${inner}</div>
+      </section>`;
+    }
+
+    return `
+      <div class="shikun-page">
+        <h1 class="shikun-page-title">${heading}</h1>
+        ${inner}
+      </div>`;
+  }
+
+  function notebookLinkButton(link) {
+    const iconClass = ICONS[link.icon] || "fa-regular fa-link";
+    const label = escapeHtml(link.label || "Link");
+    const url = escapeHtml(link.url || "#");
+    return (
+      `<a href="${url}" class="button icon shikun-notebook-link-btn" rel="noopener noreferrer">` +
+      `${label} <i class="${iconClass}"></i></a>`
+    );
+  }
+
+  function notebookEmbedUrl(meta) {
+    if (meta.html_path) return resolveContentPath(meta.html_path);
+    if (meta.ipynb_path) {
+      return resolveContentPath(meta.ipynb_path.replace(/\.ipynb$/i, ".html"));
+    }
+    return resolveContentPath("content/notebooks/linear-regression.html");
+  }
+
+  function notebookFallbackUrl(meta) {
+    const colab = (meta.links || []).find((link) =>
+      String(link.url || "").includes("colab.research.google.com")
+    );
+    if (colab) return colab.url;
+    const github = (meta.links || []).find((link) => link.icon === "github");
+    if (github) return github.url;
+    return "https://github.com/rameshaditya-me/Easy-Classical-ML-DL";
+  }
+
+  function getNotebookSource() {
+    const params = new URLSearchParams(window.location.search);
+    const querySrc = params.get("src");
+    if (querySrc) return querySrc;
+    return "content/notebooks/linear-regression.md";
+  }
+
+  function renderNotebookPage(meta) {
+    const title = escapeHtml(meta.title || "Notebook");
+    const subtitle = escapeHtml(meta.subtitle || "");
+    const embedUrl = escapeHtml(notebookEmbedUrl(meta));
+    const fallbackUrl = escapeHtml(notebookFallbackUrl(meta));
+    const links = (meta.links || []).map(notebookLinkButton).join("&nbsp;&nbsp;");
+    const linksBlock = links
+      ? `<div class="shikun-notebook-links">${links}</div>`
+      : "";
+
+    return `
+      <div class="shikun-page shikun-notebook-page">
+        <p class="shikun-notebook-back"><a href="index.html#notebooks">← Notebooks</a></p>
+        <h1 class="shikun-page-title">${title}</h1>
+        ${subtitle ? `<p class="shikun-notebook-series">${subtitle}</p>` : ""}
+        ${linksBlock}
+        <div class="shikun-notebook-embed">
+          <iframe
+            title="${title} — Jupyter notebook"
+            src="${embedUrl}"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            allow="fullscreen"
+          ></iframe>
+        </div>
+        <p class="shikun-notebook-embed-fallback text">
+          Notebook not loading?
+          <a href="${fallbackUrl}" rel="noopener noreferrer">Open on GitHub or Colab</a>.
+        </p>
       </div>`;
   }
 
@@ -361,6 +461,8 @@
   async function loadContent() {
     const topNavEl = document.getElementById("site-topnav");
     const landingEl = document.getElementById("home-landing");
+    const homeNotebooksEl = document.getElementById("home-notebooks");
+    const notebookPageEl = document.getElementById("notebook-page");
     const heroEl = document.getElementById("hero-content");
     const mainEl = document.getElementById("page-sections");
 
@@ -392,6 +494,28 @@
 
       if (PAGE === "landing" && landingEl) {
         landingEl.innerHTML = renderLanding(siteMeta);
+        if (homeNotebooksEl) {
+          const notebooksRaw = await loadMarkdown(NOTEBOOKS_PATH);
+          const { meta: notebooksMeta } = parseFrontMatter(notebooksRaw);
+          homeNotebooksEl.innerHTML = renderNotebooksList(notebooksMeta, {
+            wrapSection: true,
+          });
+        }
+        const foot = document.getElementById("site-footer");
+        if (foot) foot.innerHTML = renderSiteFooter();
+        if (window.location.hash === "#notebooks" && homeNotebooksEl) {
+          homeNotebooksEl.scrollIntoView({ behavior: "smooth" });
+        }
+        return;
+      }
+
+      if (PAGE === "notebook" && notebookPageEl) {
+        const notebookRaw = await loadMarkdown(getNotebookSource());
+        const { meta } = parseFrontMatter(notebookRaw);
+        document.title = meta.title
+          ? `${meta.title} — ${siteMeta.page_titles?.notebook || "Notebook"}`
+          : document.title;
+        notebookPageEl.innerHTML = renderNotebookPage(meta);
         const foot = document.getElementById("site-footer");
         if (foot) foot.innerHTML = renderSiteFooter();
         return;
@@ -443,6 +567,8 @@
       } else if (PAGE === "projects" || PAGE === "research") {
         const featured = await resolveFeaturedCovers(meta.featured);
         mainEl.innerHTML = renderProjectsPage({ ...meta, featured });
+      } else if (PAGE === "notebooks") {
+        mainEl.innerHTML = renderNotebooksList(meta);
       }
 
       const foot = document.getElementById("site-footer");
