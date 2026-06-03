@@ -1,5 +1,6 @@
 .DS_Store
 .DS_Store?
+content/notebooks/*.ipynb
 assets/fontawesome-pro-6.6.0-web
 assets/fonts/Athletics
 assets/fonts/Tiempos

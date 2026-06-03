@@ -313,9 +313,6 @@
 
   function notebookEmbedUrl(meta) {
     if (meta.html_path) return resolveContentPath(meta.html_path);
-    if (meta.ipynb_path) {
-      return resolveContentPath(meta.ipynb_path.replace(/\.ipynb$/i, ".html"));
-    }
     return resolveContentPath("content/notebooks/linear-regression.html");
   }
 

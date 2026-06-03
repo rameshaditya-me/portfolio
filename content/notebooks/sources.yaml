@@ -1,0 +1,9 @@
+# Notebook sources live in Easy-Classical-ML-DL (sibling repo by default).
+# Override with: EASY_ML_DL_ROOT=/path/to/Easy-Classical-ML-DL
+ml_repo: ../Easy-Classical-ML-DL
+
+notebooks:
+  - id: linear-regression
+    source: linear-regression/linear-regression.ipynb
+    meta: content/notebooks/linear-regression.md
+    html: content/notebooks/linear-regression.html

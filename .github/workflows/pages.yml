@@ -21,10 +21,24 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - uses: actions/checkout@v4
+
+      - name: Check out Easy-Classical-ML-DL
+        uses: actions/checkout@v4
+        with:
+          repository: rameshaditya-me/Easy-Classical-ML-DL
+          path: Easy-Classical-ML-DL
+
+      - name: Build notebook HTML
+        run: |
+          pip install nbconvert pyyaml
+          EASY_ML_DL_ROOT="$GITHUB_WORKSPACE/Easy-Classical-ML-DL" \
+            python3 scripts/nbconvert-notebooks.py
+
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: .
+
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4

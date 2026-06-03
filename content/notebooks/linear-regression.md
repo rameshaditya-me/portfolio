@@ -5,7 +5,6 @@ description: OLS and gradient descent from scratch
 github_repo: rameshaditya-me/Easy-Classical-ML-DL
 notebook_path: linear-regression/linear-regression.ipynb
 html_path: content/notebooks/linear-regression.html
-ipynb_path: content/notebooks/linear-regression.ipynb
 cover_image: assets/figures/project-unsplash-3.jpg
 hero_cover: false
 links:
