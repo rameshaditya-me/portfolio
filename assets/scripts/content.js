@@ -333,9 +333,9 @@
     return "content/notebooks/linear-regression.md";
   }
 
-  function renderNotebookPage(meta) {
+  function renderNotebookPage(meta, bodyMd) {
     const title = escapeHtml(meta.title || "Notebook");
-    const subtitle = escapeHtml(meta.subtitle || "");
+    const intro = markdownToHtml(meta.intro || bodyMd || "");
     const embedUrl = escapeHtml(notebookEmbedUrl(meta));
     const fallbackUrl = escapeHtml(notebookFallbackUrl(meta));
     const links = (meta.links || []).map(notebookLinkButton).join("&nbsp;&nbsp;");
@@ -347,7 +347,7 @@
       <div class="shikun-page shikun-notebook-page">
         <p class="shikun-notebook-back"><a href="${escapeHtml(resolveContentPath("notebooks.html"))}">← Notebooks</a></p>
         <h1 class="shikun-page-title">${title}</h1>
-        ${subtitle ? `<p class="shikun-notebook-series">${subtitle}</p>` : ""}
+        ${intro ? `<div class="shikun-notebook-intro shikun-projects-intro">${intro}</div>` : ""}
         ${linksBlock}
         <div class="shikun-notebook-embed">
           <iframe
@@ -496,11 +496,15 @@
 
       if (PAGE === "notebook" && notebookPageEl) {
         const notebookRaw = await loadMarkdown(getNotebookSource());
-        const { meta } = parseFrontMatter(notebookRaw);
+        const { meta, body } = parseFrontMatter(notebookRaw);
         document.title = meta.title
           ? `${meta.title} — ${siteMeta.page_titles?.notebook || "Notebook"}`
           : document.title;
-        notebookPageEl.innerHTML = renderNotebookPage(meta);
+        const descEl = document.querySelector('meta[name="description"]');
+        if (descEl && meta.description) {
+          descEl.setAttribute("content", meta.description);
+        }
+        notebookPageEl.innerHTML = renderNotebookPage(meta, body);
         const foot = document.getElementById("site-footer");
         if (foot) foot.innerHTML = renderSiteFooter();
         return;

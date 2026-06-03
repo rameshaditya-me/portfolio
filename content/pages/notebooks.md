@@ -5,6 +5,6 @@ intro: |
 notebooks:
   - venue: Linear Models
     title: Linear Regression
-    authors: OLS, gradient descent, and the probabilistic view — Easy-Classical-ML-DL
+    authors: MLE → OLS, batch GD & SGD, Gauss–Markov — from scratch in Easy-Classical-ML-DL
     url: notebook.html?src=content/notebooks/linear-regression.md
 ---
