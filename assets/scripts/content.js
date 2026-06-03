@@ -1,5 +1,5 @@
 (function () {
-  const HOME_PATH = "content/home.md";
+  const HOME_PATH = "content/home.md?v=2";
   const HERO_BUTTON_STYLE =
     "background-color: rgba(255, 255, 255, 0.25); margin-bottom: 0;";
 
@@ -62,8 +62,12 @@
 
     const linksHtml = navItems
       .map((item) => {
-        const active = item.page === PAGE ? " active" : "";
-        return `<li><a href="${escapeHtml(item.href || "#")}" class="${active.trim()}"${
+        const isActive =
+          item.page === PAGE ||
+          (item.page === "notebooks" && PAGE === "notebook");
+        const active = isActive ? " active" : "";
+        const href = escapeHtml(resolveContentPath(item.href || "#"));
+        return `<li><a href="${href}" class="${active.trim()}"${
           active ? ' aria-current="page"' : ""
         }>${escapeHtml(item.label || "")}</a></li>`;
       })
@@ -344,7 +348,7 @@
 
     return `
       <div class="shikun-page shikun-notebook-page">
-        <p class="shikun-notebook-back"><a href="notebooks.html">← Notebooks</a></p>
+        <p class="shikun-notebook-back"><a href="${escapeHtml(resolveContentPath("notebooks.html"))}">← Notebooks</a></p>
         <h1 class="shikun-page-title">${title}</h1>
         ${subtitle ? `<p class="shikun-notebook-series">${subtitle}</p>` : ""}
         ${linksBlock}
@@ -483,6 +487,10 @@
       }
 
       if (PAGE === "landing" && landingEl) {
+        if (window.location.hash === "#notebooks") {
+          window.location.replace(resolveContentPath("notebooks.html"));
+          return;
+        }
         landingEl.innerHTML = renderLanding(siteMeta);
         const foot = document.getElementById("site-footer");
         if (foot) foot.innerHTML = renderSiteFooter();
