@@ -284,25 +284,16 @@
       </div>`;
   }
 
-  function renderNotebooksList(meta, { wrapSection = false } = {}) {
-    const heading = escapeHtml(meta.section_heading || meta.page_heading || "Notebooks");
+  function renderNotebooksPage(meta) {
+    const heading = escapeHtml(meta.page_heading || "Notebooks");
+    const intro = markdownToHtml(meta.intro || "");
     const items = (meta.notebooks || []).map(renderPublication).join("");
-    const inner = `
-        <h2 class="shikun-pubs-heading" id="notebooks-heading">${heading}</h2>
-        <hr class="shikun-pubs-rule">
-        <div class="shikun-pubs-list">${items}</div>`;
-
-    if (wrapSection) {
-      return `
-      <section class="shikun-home-notebooks" id="notebooks" aria-labelledby="notebooks-heading">
-        <div class="shikun-home-notebooks-inner">${inner}</div>
-      </section>`;
-    }
 
     return `
       <div class="shikun-page">
         <h1 class="shikun-page-title">${heading}</h1>
-        ${inner}
+        <div class="shikun-projects-intro">${intro}</div>
+        <div class="shikun-pubs-list">${items}</div>
       </div>`;
   }
 
@@ -353,7 +344,7 @@
 
     return `
       <div class="shikun-page shikun-notebook-page">
-        <p class="shikun-notebook-back"><a href="index.html#notebooks">← Notebooks</a></p>
+        <p class="shikun-notebook-back"><a href="notebooks.html">← Notebooks</a></p>
         <h1 class="shikun-page-title">${title}</h1>
         ${subtitle ? `<p class="shikun-notebook-series">${subtitle}</p>` : ""}
         ${linksBlock}
@@ -461,7 +452,6 @@
   async function loadContent() {
     const topNavEl = document.getElementById("site-topnav");
     const landingEl = document.getElementById("home-landing");
-    const homeNotebooksEl = document.getElementById("home-notebooks");
     const notebookPageEl = document.getElementById("notebook-page");
     const heroEl = document.getElementById("hero-content");
     const mainEl = document.getElementById("page-sections");
@@ -494,18 +484,8 @@
 
       if (PAGE === "landing" && landingEl) {
         landingEl.innerHTML = renderLanding(siteMeta);
-        if (homeNotebooksEl) {
-          const notebooksRaw = await loadMarkdown(NOTEBOOKS_PATH);
-          const { meta: notebooksMeta } = parseFrontMatter(notebooksRaw);
-          homeNotebooksEl.innerHTML = renderNotebooksList(notebooksMeta, {
-            wrapSection: true,
-          });
-        }
         const foot = document.getElementById("site-footer");
         if (foot) foot.innerHTML = renderSiteFooter();
-        if (window.location.hash === "#notebooks" && homeNotebooksEl) {
-          homeNotebooksEl.scrollIntoView({ behavior: "smooth" });
-        }
         return;
       }
 
@@ -568,7 +548,7 @@
         const featured = await resolveFeaturedCovers(meta.featured);
         mainEl.innerHTML = renderProjectsPage({ ...meta, featured });
       } else if (PAGE === "notebooks") {
-        mainEl.innerHTML = renderNotebooksList(meta);
+        mainEl.innerHTML = renderNotebooksPage(meta);
       }
 
       const foot = document.getElementById("site-footer");

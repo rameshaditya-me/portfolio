@@ -20,7 +20,7 @@ nav:
     href: projects.html
   - label: Notebooks
     page: notebooks
-    href: index.html#notebooks
+    href: notebooks.html
   - label: About
     page: about
     href: about.html

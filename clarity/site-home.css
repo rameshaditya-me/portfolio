@@ -100,6 +100,10 @@ body[data-page="about"] .shikun-topnav-links a.active::after {
   background: var(--dot-about);
 }
 
+body[data-page="notebooks"] .shikun-topnav-links a.active::after {
+  background: var(--dot-landing);
+}
+
 .shikun-topnav-social {
   display: flex;
   align-items: center;
@@ -118,19 +122,9 @@ body[data-page="about"] .shikun-topnav-links a.active::after {
 /* —— Landing (index) —— */
 .shikun-landing {
   background: var(--shikun-bg);
-  min-height: auto;
+  min-height: calc(100vh - 80px);
   display: flex;
   align-items: center;
-}
-
-.shikun-home-notebooks-inner {
-  max-width: var(--shikun-nav-max);
-  margin: 0 auto;
-  padding: 0 2rem 5rem;
-}
-
-body[data-page="landing"] .shikun-home-notebooks .shikun-pubs-heading {
-  margin-top: 0;
 }
 
 /* —— Notebook viewer —— */
