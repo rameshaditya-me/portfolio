@@ -40,6 +40,5 @@ page_titles:
   projects: Projects — Aditya Ramesh
   notebooks: Notebooks — Aditya Ramesh
   about: About — Aditya Ramesh
-  notebook: Notebook — Aditya Ramesh
   paper: Paper — Aditya Ramesh
 ---

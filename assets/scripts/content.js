@@ -62,9 +62,7 @@
 
     const linksHtml = navItems
       .map((item) => {
-        const isActive =
-          item.page === PAGE ||
-          (item.page === "notebooks" && PAGE === "notebook");
+        const isActive = item.page === PAGE;
         const active = isActive ? " active" : "";
         const href = escapeHtml(resolveContentPath(item.href || "#"));
         return `<li><a href="${href}" class="${active.trim()}"${
@@ -211,10 +209,6 @@
     return srcFromUrl(url, "content/papers/");
   }
 
-  function notebookSrcFromUrl(url) {
-    return srcFromUrl(url, "content/notebooks/");
-  }
-
   async function resolveProjectCover(project) {
     const fallback = project.cover_image || project.image;
     const src = paperSrcFromUrl(project.url);
@@ -264,8 +258,10 @@
     const venue = escapeHtml(pub.venue || "");
     const titleText = pub.title || "";
     const href = publicationUrl(pub);
+    const external = href && /^https?:\/\//i.test(href);
+    const linkAttrs = external ? ' rel="noopener noreferrer" target="_blank"' : "";
     const titleHtml = href
-      ? `<a class="shikun-pub-title-link" href="${escapeHtml(href)}">${escapeHtml(titleText)}</a>`
+      ? `<a class="shikun-pub-title-link" href="${escapeHtml(href)}"${linkAttrs}>${escapeHtml(titleText)}</a>`
       : escapeHtml(titleText);
     const authorsHtml = String(pub.authors || "").replace(
       /\*\*([^*]+)\*\*/g,
@@ -310,70 +306,6 @@
         <h1 class="shikun-page-title">${heading}</h1>
         <div class="shikun-projects-intro">${intro}</div>
         <div class="shikun-pubs-list">${items}</div>
-      </div>`;
-  }
-
-  function notebookLinkButton(link) {
-    const iconClass = ICONS[link.icon] || "fa-regular fa-link";
-    const label = escapeHtml(link.label || "Link");
-    const url = escapeHtml(link.url || "#");
-    return (
-      `<a href="${url}" class="button icon shikun-notebook-link-btn" rel="noopener noreferrer">` +
-      `${label} <i class="${iconClass}"></i></a>`
-    );
-  }
-
-  function notebookEmbedUrl(meta) {
-    if (meta.html_path) return resolveContentPath(meta.html_path);
-    return resolveContentPath("content/notebooks/linear-regression.html");
-  }
-
-  function notebookFallbackUrl(meta) {
-    const colab = (meta.links || []).find((link) =>
-      String(link.url || "").includes("colab.research.google.com")
-    );
-    if (colab) return colab.url;
-    const github = (meta.links || []).find((link) => link.icon === "github");
-    if (github) return github.url;
-    return "https://github.com/rameshaditya-me/Easy-Classical-ML-DL";
-  }
-
-  function getNotebookSource() {
-    const params = new URLSearchParams(window.location.search);
-    const querySrc = params.get("src");
-    if (querySrc) return querySrc;
-    return "content/notebooks/linear-regression.md";
-  }
-
-  function renderNotebookPage(meta, bodyMd) {
-    const title = escapeHtml(meta.title || "Notebook");
-    const intro = markdownToHtml(meta.intro || bodyMd || "");
-    const embedUrl = escapeHtml(notebookEmbedUrl(meta));
-    const fallbackUrl = escapeHtml(notebookFallbackUrl(meta));
-    const links = (meta.links || []).map(notebookLinkButton).join("&nbsp;&nbsp;");
-    const linksBlock = links
-      ? `<div class="shikun-notebook-links">${links}</div>`
-      : "";
-
-    return `
-      <div class="shikun-page shikun-notebook-page">
-        <p class="shikun-notebook-back"><a href="${escapeHtml(resolveContentPath("notebooks.html"))}">← Notebooks</a></p>
-        <h1 class="shikun-page-title">${title}</h1>
-        ${intro ? `<div class="shikun-notebook-intro shikun-projects-intro">${intro}</div>` : ""}
-        ${linksBlock}
-        <div class="shikun-notebook-embed">
-          <iframe
-            title="${title} — Jupyter notebook"
-            src="${embedUrl}"
-            loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade"
-            allow="fullscreen"
-          ></iframe>
-        </div>
-        <p class="shikun-notebook-embed-fallback text">
-          Notebook not loading?
-          <a href="${fallbackUrl}" rel="noopener noreferrer">Open on GitHub or Colab</a>.
-        </p>
       </div>`;
   }
 
@@ -465,7 +397,6 @@
   async function loadContent() {
     const topNavEl = document.getElementById("site-topnav");
     const landingEl = document.getElementById("home-landing");
-    const notebookPageEl = document.getElementById("notebook-page");
     const heroEl = document.getElementById("hero-content");
     const mainEl = document.getElementById("page-sections");
 
@@ -503,25 +434,6 @@
         landingEl.innerHTML = renderLanding(siteMeta);
         const foot = document.getElementById("site-footer");
         if (foot) foot.innerHTML = renderSiteFooter();
-        return;
-      }
-
-      if (PAGE === "notebook" && notebookPageEl) {
-        const notebookRaw = await loadMarkdown(getNotebookSource());
-        const { meta, body } = parseFrontMatter(notebookRaw);
-        document.title = meta.title
-          ? `${meta.title} — ${siteMeta.page_titles?.notebook || "Notebook"}`
-          : document.title;
-        const descEl = document.querySelector('meta[name="description"]');
-        if (descEl && meta.description) {
-          descEl.setAttribute("content", meta.description);
-        }
-        notebookPageEl.innerHTML = renderNotebookPage(meta, body);
-        const foot = document.getElementById("site-footer");
-        if (foot) foot.innerHTML = renderSiteFooter();
-        if (window.MathJax && window.MathJax.Hub) {
-          MathJax.Hub.Queue(["Typeset", MathJax.Hub, notebookPageEl]);
-        }
         return;
       }
 
