@@ -11,4 +11,8 @@ notebooks:
     title: Regularized Linear Regression
     authors: "Ridge, Lasso & Elastic Net — shrinkage, sparsity, MAP priors — from scratch in Easy-Classical-ML-DL"
     url: https://rameshaditya-me.github.io/Easy-Classical-ML-DL/notebooks/regularized-regression/regression_regularized/
+  - venue: Linear Models
+    title: Logistic Regression
+    authors: "Sigmoid, cross-entropy, MLE & SGD, softmax — from scratch in Easy-Classical-ML-DL"
+    url: https://rameshaditya-me.github.io/Easy-Classical-ML-DL/notebooks/logistic-regression/logistic_regression/
 ---
