@@ -166,7 +166,19 @@
   }
 
   function markdownToHtml(md) {
-    const html = marked.parse(md || "", { gfm: true });
+    const mathSlots = [];
+    const withMathProtected = String(md || "").replace(
+      /\$\$([\s\S]+?)\$\$|\$([^\$\n]+?)\$/g,
+      (match) => {
+        const key = `%%MATH${mathSlots.length}%%`;
+        mathSlots.push(match);
+        return key;
+      }
+    );
+    let html = marked.parse(withMathProtected, { gfm: true });
+    mathSlots.forEach((expr, i) => {
+      html = html.split(`%%MATH${i}%%`).join(expr);
+    });
     return html
       .replace(/<p>/g, '<p class="text">')
       .replace(/<table>/g, '<table class="text">');
@@ -507,6 +519,9 @@
         notebookPageEl.innerHTML = renderNotebookPage(meta, body);
         const foot = document.getElementById("site-footer");
         if (foot) foot.innerHTML = renderSiteFooter();
+        if (window.MathJax && window.MathJax.Hub) {
+          MathJax.Hub.Queue(["Typeset", MathJax.Hub, notebookPageEl]);
+        }
         return;
       }
 

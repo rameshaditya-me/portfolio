@@ -7,3 +7,7 @@ notebooks:
     source: linear-regression/linear-regression.ipynb
     meta: content/notebooks/linear-regression.md
     html: content/notebooks/linear-regression.html
+  - id: regularized-regression
+    source: regularized-regression/regression_regularized.ipynb
+    meta: content/notebooks/regularized-regression.md
+    html: content/notebooks/regularized-regression.html

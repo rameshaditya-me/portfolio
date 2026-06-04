@@ -5,6 +5,10 @@ intro: |
 notebooks:
   - venue: Linear Models
     title: Linear Regression
-    authors: MLE → OLS, batch GD & SGD, Gauss–Markov — from scratch in Easy-Classical-ML-DL
+    authors: "MLE → OLS, batch GD & SGD, Gauss–Markov — from scratch in Easy-Classical-ML-DL"
     url: notebook.html?src=content/notebooks/linear-regression.md
+  - venue: Linear Models
+    title: Regularized Linear Regression
+    authors: "Ridge, Lasso & Elastic Net — shrinkage, sparsity, MAP priors — from scratch in Easy-Classical-ML-DL"
+    url: notebook.html?src=content/notebooks/regularized-regression.md
 ---
