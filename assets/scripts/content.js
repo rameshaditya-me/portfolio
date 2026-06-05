@@ -428,7 +428,9 @@
 
       if (PAGE === "landing" && landingEl) {
         if (window.location.hash === "#notebooks") {
-          window.location.replace(resolveContentPath("notebooks.html"));
+          window.location.replace(
+            "https://rameshaditya-me.github.io/Easy-Classical-ML-DL/"
+          );
           return;
         }
         landingEl.innerHTML = renderLanding(siteMeta);

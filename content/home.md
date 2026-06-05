@@ -20,7 +20,7 @@ nav:
     href: projects.html
   - label: Notebooks
     page: notebooks
-    href: notebooks.html
+    href: https://rameshaditya-me.github.io/Easy-Classical-ML-DL/
   - label: About
     page: about
     href: about.html
