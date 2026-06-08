@@ -20,7 +20,7 @@ nav:
     href: projects.html
   - label: Notebooks
     page: notebooks
-    href: https://rameshaditya-me.github.io/Easy-Classical-ML-DL/notebooks/linear-regression/linear-regression/
+    href: https://rameshaditya-me.github.io/Easy-Classical-ML-DL/
   - label: About
     page: about
     href: about.html
